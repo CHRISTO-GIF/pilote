@@ -1,50 +1,28 @@
 # Installer Pilote depuis un téléphone
 
-Aucun ordinateur n'est nécessaire : GitHub installe et met en ligne l'application pour vous.
-Astuce : dans Chrome, activez **⋮ → Version pour ordinateur** sur les sites GitHub et Supabase, c'est plus confortable.
+L'installation est automatique : GitHub crée le projet Supabase, les tables, les fonctions,
+la publication automatique et met les sites en ligne. Vous n'avez qu'**un code** à copier.
 
-## 1. Préparer Supabase (supabase.com)
-1. **New project** → choisissez un mot de passe de base de données → notez-le.
-2. **Project Settings → General** : notez le **Project ID** (ex. `abcd1234efgh`).
-3. **Project Settings → API Keys** : copiez la clé **anon** (ou *publishable*).
-4. **Authentication → Sign In / Providers → Email** : désactivez **Confirm email**.
-5. Avatar en haut à droite → **Account → Access Tokens** → **Generate new token** → copiez-le.
+## 1. Le code Supabase (obligatoire)
+1. Ouvrez **https://supabase.com/dashboard/account/tokens** (créez un compte si besoin : *Continue with GitHub* est le plus simple).
+2. Touchez **Generate new token**, nom : `pilote`, puis **Generate token**.
+3. Touchez **Copy** (le code commence par `sbp_`).
 
-## 2. Clé IA (console.anthropic.com)
-**API Keys → Create Key** → copiez la clé (`sk-ant-...`).
+## 2. Le coller dans GitHub
+1. Ouvrez **https://github.com/CHRISTO-GIF/pilote/settings/secrets/actions/new**
+2. Case **Name** : `SUPABASE_ACCESS_TOKEN`
+3. Case **Secret** : collez le code.
+4. Touchez **Add secret**.
 
-## 3. Ranger les clés dans GitHub
-Dépôt **pilote** → **Settings → Secrets and variables → Actions → New repository secret**, six fois :
+C'est tout. Prévenez Claude : il lance l'installation (5 minutes).
 
-| Nom (à recopier exactement) | Valeur |
-|---|---|
-| `SUPABASE_ACCESS_TOKEN` | jeton de l'étape 1.5 |
-| `SUPABASE_PROJECT_REF` | Project ID de l'étape 1.2 |
-| `SUPABASE_DB_PASSWORD` | mot de passe de l'étape 1.1 |
-| `SUPABASE_ANON_KEY` | clé anon de l'étape 1.3 |
-| `ANTHROPIC_API_KEY` | clé IA de l'étape 2 |
-| `CRON_SECRET` | une phrase inventée, longue, sans espace (ex. `Pilote-Ndjamena-2026-xK29`) |
+## 3. (Facultatif) La rédaction par l'IA
+Créez une clé sur **https://console.anthropic.com/settings/keys** (un crédit prépayé est nécessaire),
+puis ajoutez-la comme au point 2 avec le nom `ANTHROPIC_API_KEY`.
+Sans cette clé, Pilote et Motion fonctionnent : seuls les boutons d'IA sont inactifs.
 
-## 4. Activer le site
-Dépôt **pilote** → **Settings → Pages → Source : GitHub Actions**.
+## Vos adresses
+- Tableau de bord : **https://christo-gif.github.io/pilote/**
+- Motion : **https://christo-gif.github.io/pilote/motion/**
 
-## 5. Lancer l'installation
-Onglet **Actions → Déployer Pilote → Run workflow → Run workflow**.
-Attendez 3 à 5 minutes que les trois étapes passent au vert ✅.
-
-Vos adresses :
-- Tableau de bord : `https://VOTRE-NOM.github.io/pilote/`
-- Motion : `https://VOTRE-NOM.github.io/pilote/motion/`
-
-Ajoutez-les à l'écran d'accueil (Chrome **⋮ → Ajouter à l'écran d'accueil**) : elles s'ouvrent comme des applications.
-
-## 6. Premier usage
-Créer un compte → **Comptes** (ajouter la page Facebook) → **Bibliothèque** → **Planning**.
-
-## En cas d'étape rouge ❌
-Touchez l'étape en échec, lisez la dernière ligne rouge et envoyez-la (ou une capture) à Claude.
-- *Secrets manquants* : un nom est mal recopié à l'étape 3.
-- *password authentication failed* : mauvais `SUPABASE_DB_PASSWORD`.
-- *Get Pages site failed* : l'étape 4 n'a pas été faite.
-
-Chaque mise à jour du code relance l'installation automatiquement.
+Dans Chrome : **⋮ → Ajouter à l'écran d'accueil** pour les ouvrir comme des applications.
