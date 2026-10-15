@@ -36,7 +36,7 @@ input[type="color"] { padding: 2px; width: 52px; height: 40px; cursor: pointer; 
 /* ---------- Top bar ---------- */
 .app { min-height: 100vh; display: flex; flex-direction: column; }
 .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 20px; border-bottom: 1px solid var(--line); background: var(--panel); position: sticky; top: 0; z-index: 10; flex-wrap: wrap; }
-.brand { display: flex; align-items: center; gap: 10px; font-family: "Bricolage Grotesque"; font-weight: 700; font-size: 1.2rem; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: "Bricolage Grotesque", Inter, sans-serif; font-weight: 700; font-size: 1.2rem; }
 .brand em { font-style: normal; color: var(--accent); }
 .mark { width: 32px; height: 32px; border-radius: 9px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); display: grid; place-items: center; font-size: .8rem; }
 .top-right { display: flex; gap: 8px; }

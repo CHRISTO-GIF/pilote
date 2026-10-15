@@ -10,7 +10,7 @@ const blank = {
   post_time: "09:00",
   account_ids: [],
   tags: "",
-  ai_mode: "enhance",
+  ai_mode: "none",
   ai_brief: "",
   require_approval: false,
 };
