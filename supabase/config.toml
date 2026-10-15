@@ -1,0 +1,20 @@
+project_id = "pilote"
+
+# Les fonctions vérifient elles-mêmes l'appelant (secret du cron ou JWT utilisateur).
+[functions.planner]
+verify_jwt = false
+
+[functions.publisher]
+verify_jwt = false
+
+[functions.generate-caption]
+verify_jwt = false
+
+[functions.account-tools]
+verify_jwt = false
+
+[functions.motion-script]
+verify_jwt = false
+
+[functions.setup-cron]
+verify_jwt = false
