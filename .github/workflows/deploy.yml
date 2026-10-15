@@ -8,9 +8,7 @@ on:
     branches: [main]
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: deploy-pilote
@@ -54,24 +52,17 @@ jobs:
     needs: server
     if: always()
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - id: pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - name: Construire
         env:
           VITE_SUPABASE_URL: ${{ needs.server.outputs.url }}
           VITE_SUPABASE_ANON_KEY: ${{ needs.server.outputs.anon }}
           VITE_TIMEZONE: Africa/Ndjamena
-          BASE: ${{ steps.pages.outputs.base_url }}
+          BASE: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
         run: |
           export VITE_MOTION_URL="$BASE/motion/"
           export VITE_PILOTE_URL="$BASE/"
@@ -84,8 +75,15 @@ jobs:
           else
             cp scripts/attente.html site/index.html
           fi
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: site
-      - id: deploy
-        uses: actions/deploy-pages@v4
+      - name: Publier sur le site (branche gh-pages)
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd site
+          touch .nojekyll
+          git init -q
+          git checkout -q -b gh-pages
+          git add -A
+          git -c user.name="github-actions" -c user.email="actions@github.com" commit -qm "Mise en ligne ${GITHUB_SHA::7}"
+          git push -qf "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gh-pages
+          echo "✓ En ligne : https://${GITHUB_REPOSITORY_OWNER,,}.github.io/${GITHUB_REPOSITORY#*/}/"
