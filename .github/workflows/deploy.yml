@@ -1,5 +1,5 @@
-# Installation et mise à jour de Pilote en un clic (onglet Actions → "Déployer Pilote" → Run workflow).
-# Tout se fait sur les serveurs de GitHub : aucun ordinateur nécessaire.
+# Installation et mise à jour de Pilote — aucun ordinateur nécessaire.
+# Seul secret obligatoire : SUPABASE_ACCESS_TOKEN. Facultatif : ANTHROPIC_API_KEY (rédaction par l'IA).
 name: Déployer Pilote
 
 on:
@@ -17,67 +17,42 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  check:
-    name: Vérifier la configuration
+  server:
+    name: Serveur (Supabase)
     runs-on: ubuntu-latest
     outputs:
-      ready: ${{ steps.c.outputs.ready }}
-    steps:
-      - id: c
-        env:
-          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
-          SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
-          SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          CRON_SECRET: ${{ secrets.CRON_SECRET }}
-        run: |
-          missing=""
-          for v in SUPABASE_ACCESS_TOKEN SUPABASE_PROJECT_REF SUPABASE_DB_PASSWORD SUPABASE_ANON_KEY ANTHROPIC_API_KEY CRON_SECRET; do
-            [ -z "${!v}" ] && missing="$missing $v"
-          done
-          if [ -n "$missing" ]; then
-            echo "::warning::Secrets manquants :$missing — ajoutez-les dans Settings → Secrets and variables → Actions, puis relancez."
-            echo "ready=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "ready=true" >> "$GITHUB_OUTPUT"
-          fi
-
-  backend:
-    name: Base de données, fonctions et automatisation
-    needs: check
-    if: needs.check.outputs.ready == 'true'
-    runs-on: ubuntu-latest
-    env:
-      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
-      SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
-      REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+      url: ${{ steps.setup.outputs.url }}
+      anon: ${{ steps.setup.outputs.anon }}
     steps:
       - uses: actions/checkout@v4
+      - name: Jeton Supabase présent ?
+        id: has
+        env:
+          T: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: |
+          if [ -z "$T" ]; then
+            echo "::warning::Ajoutez le secret SUPABASE_ACCESS_TOKEN pour installer le serveur. Motion est mis en ligne quand même."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          fi
       - uses: supabase/setup-cli@v1
+        if: steps.has.outputs.ok == 'true'
         with:
           version: latest
-      - name: Relier le projet
-        run: supabase link --project-ref "$REF" --password "$SUPABASE_DB_PASSWORD"
-      - name: Créer / mettre à jour les tables
-        run: supabase db push --password "$SUPABASE_DB_PASSWORD"
-      - name: Enregistrer les secrets des fonctions
-        run: |
-          supabase secrets set --project-ref "$REF" \
-            ANTHROPIC_API_KEY="${{ secrets.ANTHROPIC_API_KEY }}" \
-            CRON_SECRET="${{ secrets.CRON_SECRET }}"
-      - name: Déployer les fonctions
-        run: supabase functions deploy --project-ref "$REF"
-      - name: Activer la publication automatique
-        run: |
-          sleep 10
-          curl -sS --fail-with-body -X POST "https://$REF.supabase.co/functions/v1/setup-cron" \
-            -H "x-cron-secret: ${{ secrets.CRON_SECRET }}" -H "Content-Type: application/json" -d '{}'
+      - name: Installer / mettre à jour
+        id: setup
+        if: steps.has.outputs.ok == 'true'
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+        run: bash scripts/supabase-setup.sh
 
-  frontend:
-    name: Mettre en ligne le tableau de bord et Motion
-    needs: check
-    if: needs.check.outputs.ready == 'true'
+  site:
+    name: Sites (tableau de bord + Motion)
+    needs: server
+    if: always()
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -89,21 +64,26 @@ jobs:
           node-version: 20
       - id: pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - name: Construire
         env:
-          VITE_SUPABASE_URL: https://${{ secrets.SUPABASE_PROJECT_REF }}.supabase.co
-          VITE_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          VITE_SUPABASE_URL: ${{ needs.server.outputs.url }}
+          VITE_SUPABASE_ANON_KEY: ${{ needs.server.outputs.anon }}
           VITE_TIMEZONE: Africa/Ndjamena
           BASE: ${{ steps.pages.outputs.base_url }}
         run: |
           export VITE_MOTION_URL="$BASE/motion/"
           export VITE_PILOTE_URL="$BASE/"
-          (cd dashboard && npm install --no-audit --no-fund && npm run build)
           (cd motion && npm install --no-audit --no-fund && npm run build)
-          mkdir -p site
-          cp -r dashboard/dist/. site/
           mkdir -p site/motion
           cp -r motion/dist/. site/motion/
+          if [ -n "$VITE_SUPABASE_URL" ]; then
+            (cd dashboard && npm install --no-audit --no-fund && npm run build)
+            cp -r dashboard/dist/. site/
+          else
+            cp scripts/attente.html site/index.html
+          fi
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site

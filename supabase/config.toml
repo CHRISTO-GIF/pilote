@@ -16,5 +16,3 @@ verify_jwt = false
 [functions.motion-script]
 verify_jwt = false
 
-[functions.setup-cron]
-verify_jwt = false
