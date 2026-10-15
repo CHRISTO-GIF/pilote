@@ -29,7 +29,7 @@ export function publicMediaUrl(path: string | null): string | null {
 export type AccountRow = {
   id: string;
   user_id: string;
-  platform: "facebook" | "instagram" | "linkedin" | "tiktok";
+  platform: "facebook" | "instagram" | "linkedin" | "tiktok" | "youtube";
   name: string;
   external_id: string;
   active: boolean;

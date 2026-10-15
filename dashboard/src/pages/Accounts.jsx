@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { callFn, fmtDate, PLATFORMS, supabase } from "../lib/supabase.js";
-import { Empty, PageHead, PlatformBadge, useAction } from "../components/ui.jsx";
+import { Empty, PageHead, PlatformBadge, toast, useAction } from "../components/ui.jsx";
 
 const blank = { platform: "facebook", name: "", external_id: "", access_token: "", refresh_token: "", expires_days: "" };
 
@@ -15,7 +15,27 @@ export default function Accounts() {
   }
   useEffect(() => { load(); }, []);
 
-  const set = (k) => (e) => setForm({ ...form, [k]: e.target.value });
+  // Retour de la connexion Google (YouTube)
+  useEffect(() => {
+    const q = new URLSearchParams(location.search);
+    const yt = q.get("youtube");
+    if (!yt) return;
+    const msg = yt === "ok" ? ["Chaîne YouTube connectée ✓", "ok"]
+      : yt === "annule" ? ["Connexion YouTube annulée", "bad"]
+      : [`YouTube : ${q.get("message") ?? "la connexion a échoué"}`, "bad"];
+    setTimeout(() => toast(...msg), 400); // laisser le temps au système de notifications de démarrer
+    history.replaceState(null, "", location.pathname + location.hash);
+  }, []);
+
+  async function connectYouTube() {
+    const r = await run("yt", () => callFn("youtube-oauth", {
+      action: "start",
+      return_url: location.origin + location.pathname,
+    }));
+    if (r?.url) location.href = r.url;
+  }
+
+  const set =(k) => (e) => setForm({ ...form, [k]: e.target.value });
 
   async function saveToken(accountId, f) {
     await callFn("account-tools", {
@@ -66,6 +86,16 @@ export default function Accounts() {
                 onClick={() => setForm({ ...form, platform: k })}>{v.label}</button>
             ))}
           </div>
+          {p.oauth ? (
+            <div className="oauth-box">
+              <p>{p.help}</p>
+              <button type="button" className="btn primary" disabled={!!busy} onClick={connectYouTube}>
+                {busy === "yt" ? "Ouverture de Google…" : "▶ Connecter ma chaîne YouTube"}
+              </button>
+              <small className="muted">Vous choisirez votre compte Google, puis vous reviendrez ici automatiquement.</small>
+              <button type="button" className="btn" onClick={() => setForm(null)}>Annuler</button>
+            </div>
+          ) : (<>
           <label>Nom affiché<input required value={form.name} onChange={set("name")} placeholder="Ex. Page de l'école" /></label>
           <label>{p.idLabel}<input required value={form.external_id} onChange={set("external_id")} /><small>{p.idHelp}</small></label>
           <label>Jeton d'accès<textarea required rows={3} value={form.access_token} onChange={set("access_token")} /><small>{p.tokenHelp}</small></label>
@@ -83,11 +113,12 @@ export default function Accounts() {
             <button className="btn primary" disabled={!!busy}>{busy ? "Enregistrement…" : "Enregistrer et tester"}</button>
             <button type="button" className="btn" onClick={() => setForm(null)}>Annuler</button>
           </div>
+          </>)}
         </form>
       )}
 
       {list.length === 0 && !form ? (
-        <Empty title="Aucun compte">Ajoutez votre première page Facebook, Instagram, LinkedIn ou TikTok.</Empty>
+        <Empty title="Aucun compte">Ajoutez votre première page Facebook, Instagram, LinkedIn, TikTok ou votre chaîne YouTube.</Empty>
       ) : (
         <div className="grid">
           {list.map((a) => (
@@ -116,12 +147,16 @@ export default function Accounts() {
                     (c) => c.message).then(load)}>
                   {busy === a.id ? "Test…" : "Tester"}
                 </button>
+                {PLATFORMS[a.platform]?.oauth ? (
+                  <button className="btn sm" disabled={!!busy} onClick={connectYouTube}>Reconnecter</button>
+                ) : (
                 <button className="btn sm" onClick={() => {
                   const t = prompt("Nouveau jeton d'accès :");
                   if (!t) return;
                   const days = a.platform === "linkedin" ? prompt("Expire dans combien de jours ? (vide = jamais)", "60") : "";
                   run("tok", () => saveToken(a.id, { access_token: t, expires_days: days }), "Jeton mis à jour");
                 }}>Changer le jeton</button>
+                )}
                 <button className="btn sm danger" onClick={async () => {
                   if (!confirm(`Supprimer « ${a.name} » et ses publications programmées ?`)) return;
                   await supabase.from("accounts").delete().eq("id", a.id);

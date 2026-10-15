@@ -83,7 +83,7 @@ export default function Library({ user }) {
           <label>Image ou vidéo
             <input type="file" accept="image/jpeg,image/png,video/mp4,video/quicktime"
               onChange={(e) => setForm({ ...form, file: e.target.files[0] ?? null })} />
-            <small>JPEG ou PNG pour les images, MP4 pour les vidéos. Instagram et TikTok exigent un média.</small>
+            <small>JPEG ou PNG pour les images, MP4 pour les vidéos. Instagram et TikTok exigent un média ; YouTube exige une vidéo.</small>
           </label>
           {form.media_path && !form.file && <Thumb path={form.media_path} type={form.media_type} />}
           <div className="row gap">

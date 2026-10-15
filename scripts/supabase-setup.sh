@@ -66,6 +66,10 @@ echo "::add-mask::$CRON_SECRET"
 args=("CRON_SECRET=$CRON_SECRET")
 if [ -n "${ANTHROPIC_API_KEY:-}" ]; then args+=("ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY"); else
   echo "::notice::Pas de clé ANTHROPIC_API_KEY : Pilote fonctionne, mais sans rédaction par l'IA."; fi
+[ -n "${GOOGLE_CLIENT_ID:-}" ] && args+=("GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID")
+[ -n "${GOOGLE_CLIENT_SECRET:-}" ] && args+=("GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET")
+[ -n "${PUBLIC_SITE_URL:-}" ] && args+=("PUBLIC_SITE_URL=$PUBLIC_SITE_URL")
+[ -z "${GOOGLE_CLIENT_ID:-}" ] && echo "::notice::YouTube pas encore configuré (GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET)."
 supabase secrets set --project-ref "$REF" "${args[@]}"
 
 # 6) Fonctions serveur

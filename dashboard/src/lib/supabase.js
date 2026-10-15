@@ -67,6 +67,12 @@ export const PLATFORMS = {
     idHelp: "Renvoyé par TikTok lors de l'autorisation OAuth.",
     tokenHelp: "Jeton d'accès (24 h) + jeton de rafraîchissement : Pilote le renouvelle tout seul.",
   },
+  youtube: {
+    label: "YouTube",
+    color: "#FF0000",
+    oauth: true,
+    help: "Vidéos uniquement. Une vidéo verticale de moins de 3 minutes est publiée comme Short.",
+  },
 };
 
 export const STATUS = {

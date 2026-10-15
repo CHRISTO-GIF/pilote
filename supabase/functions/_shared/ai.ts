@@ -9,6 +9,8 @@ const PLATFORM_GUIDE: Record<Platform, string> = {
     "LinkedIn : ton professionnel et crédible, une idée utile ou un enseignement concret, paragraphes aérés, 3 hashtags maximum.",
   tiktok:
     "TikTok : très court (moins de 150 caractères), dynamique, 3 à 5 hashtags.",
+  youtube:
+    "YouTube : première ligne = titre accrocheur de moins de 90 caractères, puis une description de 2 à 4 phrases avec un appel à l'action, puis 3 à 5 hashtags dont #Shorts.",
 };
 
 export type CaptionRequest = {

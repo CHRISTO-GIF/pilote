@@ -1,6 +1,6 @@
 import { sleep } from "./http.ts";
 
-export type Platform = "facebook" | "instagram" | "linkedin" | "tiktok";
+export type Platform = "facebook" | "instagram" | "linkedin" | "tiktok" | "youtube";
 export type MediaType = "image" | "video" | null;
 
 export type PublishInput = {
@@ -22,6 +22,8 @@ export function supports(platform: Platform, mediaType: MediaType): boolean {
       return mediaType === null || mediaType === "image";
     case "tiktok":
       return mediaType === "image" || mediaType === "video";
+    case "youtube":
+      return mediaType === "video";
   }
 }
 
@@ -38,6 +40,8 @@ export async function publish(platform: Platform, input: PublishInput): Promise<
       return await publishLinkedIn(input);
     case "tiktok":
       return await publishTikTok(input);
+    case "youtube":
+      return await publishYouTube(input);
   }
 }
 
@@ -73,6 +77,10 @@ export async function checkAccount(platform: Platform, externalId: string, token
         throw new Error(`TikTok : ${r.error?.message ?? res.status}`);
       }
       return `Compte TikTok « ${r.data?.user?.display_name ?? "?"} » accessible`;
+    }
+    case "youtube": {
+      const ch = await youtubeChannel(token);
+      return `Chaîne YouTube « ${ch.title} » accessible`;
     }
   }
 }
@@ -274,5 +282,88 @@ export async function refreshTikTokToken(refreshToken: string) {
     access_token: data.access_token as string,
     refresh_token: (data.refresh_token as string) ?? refreshToken,
     expires_at: new Date(Date.now() + (data.expires_in ?? 86400) * 1000).toISOString(),
+  };
+}
+
+// ---------------------------------------------------------------------
+// YouTube — Data API v3 (envoi de vidéos ; une vidéo verticale courte devient un Short)
+// ---------------------------------------------------------------------
+export async function youtubeChannel(token: string): Promise<{ id: string; title: string }> {
+  const res = await fetch("https://www.googleapis.com/youtube/v3/channels?part=snippet&mine=true", {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(`YouTube : ${data.error?.message ?? res.status}`);
+  const ch = data.items?.[0];
+  if (!ch) throw new Error("YouTube : aucune chaîne sur ce compte Google (créez-en une sur youtube.com)");
+  return { id: ch.id, title: ch.snippet?.title ?? "YouTube" };
+}
+
+async function publishYouTube(i: PublishInput): Promise<string> {
+  const media = await fetch(i.mediaUrl!);
+  if (!media.ok) throw new Error(`Téléchargement de la vidéo impossible (${media.status})`);
+  const bytes = new Uint8Array(await media.arrayBuffer());
+  const type = media.headers.get("content-type")?.split(";")[0] || "video/mp4";
+
+  // Titre : première ligne de la légende (100 caractères max, sans < >)
+  const clean = (x: string) => x.replace(/[<>]/g, "").trim();
+  const firstLine = clean(i.caption.split("\n").find((l) => l.trim()) ?? "") || "Nouvelle vidéo";
+  const title = firstLine.length > 100 ? firstLine.slice(0, 97) + "…" : firstLine;
+
+  const init = await fetch(
+    "https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status",
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${i.token}`,
+        "Content-Type": "application/json; charset=UTF-8",
+        "X-Upload-Content-Type": type,
+        "X-Upload-Content-Length": String(bytes.byteLength),
+      },
+      body: JSON.stringify({
+        snippet: { title, description: clean(i.caption).slice(0, 5000), categoryId: "22" },
+        status: {
+          privacyStatus: Deno.env.get("YOUTUBE_PRIVACY") ?? "public",
+          selfDeclaredMadeForKids: false,
+        },
+      }),
+    },
+  );
+  if (!init.ok) {
+    const e = await init.json().catch(() => ({}));
+    throw new Error(`YouTube : ${e.error?.message ?? init.status}`);
+  }
+  const uploadUrl = init.headers.get("location");
+  if (!uploadUrl) throw new Error("YouTube : adresse d'envoi manquante");
+  const up = await fetch(uploadUrl, {
+    method: "PUT",
+    headers: { Authorization: `Bearer ${i.token}`, "Content-Type": type },
+    body: bytes,
+  });
+  const data = await up.json().catch(() => ({}));
+  if (!up.ok) throw new Error(`YouTube : ${data.error?.message ?? up.status}`);
+  return data.id;
+}
+
+/** Renouvelle un jeton Google (durée de vie 1 h) à partir du jeton de rafraîchissement. */
+export async function refreshGoogleToken(refreshToken: string) {
+  const res = await fetch("https://oauth2.googleapis.com/token", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      client_id: Deno.env.get("GOOGLE_CLIENT_ID") ?? "",
+      client_secret: Deno.env.get("GOOGLE_CLIENT_SECRET") ?? "",
+      refresh_token: refreshToken,
+      grant_type: "refresh_token",
+    }),
+  });
+  const data = await res.json();
+  if (!res.ok || !data.access_token) {
+    throw new Error(`Google : ${data.error_description ?? data.error ?? res.status} — reconnectez la chaîne YouTube`);
+  }
+  return {
+    access_token: data.access_token as string,
+    refresh_token: refreshToken,
+    expires_at: new Date(Date.now() + (data.expires_in ?? 3600) * 1000).toISOString(),
   };
 }

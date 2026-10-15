@@ -1,8 +1,9 @@
 // Publication : envoie aux réseaux les publications arrivées à échéance.
 // Appelé toutes les 5 min par le cron, ou par le tableau de bord ("Publier maintenant").
-import { admin, identify, publicMediaUrl, type AccountRow, type SecretRow } from "../_shared/db.ts";
+import { admin, identify, publicMediaUrl, type AccountRow } from "../_shared/db.ts";
 import { corsHeaders, errorMessage, json } from "../_shared/http.ts";
-import { publish, refreshTikTokToken } from "../_shared/platforms.ts";
+import { publish } from "../_shared/platforms.ts";
+import { freshToken } from "../_shared/tokens.ts";
 
 const BATCH = 5;          // limite par exécution (les fonctions ont une durée max)
 const MAX_ATTEMPTS = 3;
@@ -100,27 +101,7 @@ async function publishOne(post: Post): Promise<string> {
   if (!account) throw new Error("Compte introuvable");
   if (!account.active) throw new Error("Compte désactivé");
 
-  const { data: secret } = await admin
-    .from("account_secrets")
-    .select("account_id, access_token, refresh_token, expires_at")
-    .eq("account_id", account.id)
-    .single<SecretRow>();
-  if (!secret) throw new Error("Aucun jeton d'accès enregistré pour ce compte");
-
-  let token = secret.access_token;
-  const expiresSoon = secret.expires_at && Date.parse(secret.expires_at) < Date.now() + 10 * 60_000;
-  if (expiresSoon) {
-    if (account.platform === "tiktok" && secret.refresh_token) {
-      const fresh = await refreshTikTokToken(secret.refresh_token);
-      await admin
-        .from("account_secrets")
-        .update({ ...fresh, updated_at: new Date().toISOString() })
-        .eq("account_id", account.id);
-      token = fresh.access_token;
-    } else if (Date.parse(secret.expires_at!) < Date.now()) {
-      throw new Error("Jeton expiré : mettez-le à jour dans « Comptes »");
-    }
-  }
+  const token = await freshToken(account);
 
   return await publish(account.platform, {
     externalId: account.external_id,

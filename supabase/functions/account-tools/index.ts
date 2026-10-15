@@ -2,6 +2,7 @@
 import { admin, identify, type AccountRow } from "../_shared/db.ts";
 import { corsHeaders, errorMessage, json } from "../_shared/http.ts";
 import { checkAccount } from "../_shared/platforms.ts";
+import { freshToken } from "../_shared/tokens.ts";
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
@@ -45,7 +46,7 @@ Deno.serve(async (req) => {
       message = "Aucun jeton enregistré";
     } else {
       try {
-        message = await checkAccount(account.platform, account.external_id, secret.access_token);
+        message = await checkAccount(account.platform, account.external_id, await freshToken(account));
         ok = true;
       } catch (e) {
         message = errorMessage(e);

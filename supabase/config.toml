@@ -16,3 +16,6 @@ verify_jwt = false
 [functions.motion-script]
 verify_jwt = false
 
+
+[functions.youtube-oauth]
+verify_jwt = false

@@ -4,7 +4,7 @@ import { corsHeaders, errorMessage, json } from "../_shared/http.ts";
 import { writeCaption } from "../_shared/ai.ts";
 import type { Platform } from "../_shared/platforms.ts";
 
-const PLATFORMS: Platform[] = ["facebook", "instagram", "linkedin", "tiktok"];
+const PLATFORMS: Platform[] = ["facebook", "instagram", "linkedin", "tiktok", "youtube"];
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
