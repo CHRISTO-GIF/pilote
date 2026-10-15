@@ -42,6 +42,7 @@ export const PLATFORMS = {
   facebook: {
     label: "Facebook",
     color: "#1877F2",
+    oauth: "meta",
     idLabel: "ID de la Page Facebook",
     idHelp: "Paramètres de la Page → Transparence, ou Meta Business Suite.",
     tokenHelp: "Jeton d'accès de la Page (longue durée, n'expire pas s'il vient d'un jeton utilisateur longue durée).",
@@ -49,6 +50,7 @@ export const PLATFORMS = {
   instagram: {
     label: "Instagram",
     color: "#E1306C",
+    oauth: "meta",
     idLabel: "ID du compte Instagram professionnel",
     idHelp: "Compte pro relié à une Page Facebook (Graph API : /{page-id}?fields=instagram_business_account).",
     tokenHelp: "Jeton de la Page Facebook reliée au compte Instagram.",
@@ -70,7 +72,7 @@ export const PLATFORMS = {
   youtube: {
     label: "YouTube",
     color: "#FF0000",
-    oauth: true,
+    oauth: "youtube",
     help: "Vidéos uniquement. Une vidéo verticale de moins de 3 minutes est publiée comme Short.",
   },
 };

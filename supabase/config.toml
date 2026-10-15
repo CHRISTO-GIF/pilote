@@ -19,3 +19,6 @@ verify_jwt = false
 
 [functions.youtube-oauth]
 verify_jwt = false
+
+[functions.meta-oauth]
+verify_jwt = false

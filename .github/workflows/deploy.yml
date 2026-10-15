@@ -46,6 +46,9 @@ jobs:
           SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          META_APP_ID: ${{ secrets.META_APP_ID }}
+          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+          META_CONFIG_ID: ${{ secrets.META_CONFIG_ID }}
           PUBLIC_SITE_URL: https://${{ github.repository_owner }}.github.io
         run: bash scripts/supabase-setup.sh
 

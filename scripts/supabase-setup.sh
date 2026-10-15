@@ -69,6 +69,10 @@ if [ -n "${ANTHROPIC_API_KEY:-}" ]; then args+=("ANTHROPIC_API_KEY=$ANTHROPIC_AP
 [ -n "${GOOGLE_CLIENT_ID:-}" ] && args+=("GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID")
 [ -n "${GOOGLE_CLIENT_SECRET:-}" ] && args+=("GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET")
 [ -n "${PUBLIC_SITE_URL:-}" ] && args+=("PUBLIC_SITE_URL=$PUBLIC_SITE_URL")
+[ -n "${META_APP_ID:-}" ] && args+=("META_APP_ID=$META_APP_ID")
+[ -n "${META_APP_SECRET:-}" ] && args+=("META_APP_SECRET=$META_APP_SECRET")
+[ -n "${META_CONFIG_ID:-}" ] && args+=("META_CONFIG_ID=$META_CONFIG_ID")
+[ -z "${META_APP_ID:-}" ] && echo "::notice::Facebook/Instagram pas encore configurés (META_APP_ID / META_APP_SECRET)."
 [ -z "${GOOGLE_CLIENT_ID:-}" ] && echo "::notice::YouTube pas encore configuré (GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET)."
 supabase secrets set --project-ref "$REF" "${args[@]}"
 
