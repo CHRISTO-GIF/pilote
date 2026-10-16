@@ -53,10 +53,15 @@ Deno.serve(async (req) => {
       response_type: "code",
       state: await signState(caller.userId, ret),
     };
-    // Applis récentes (Facebook Login for Business) : identifiant de configuration ; sinon liste des autorisations
+    // Liste des autorisations (testé : fonctionne avec l'appli Pilote, alors que config_id renvoie
+    // une erreur générique). META_USE_CONFIG=true permet de revenir à l'identifiant de configuration.
     const configId = Deno.env.get("META_CONFIG_ID");
-    if (configId) params.config_id = configId;
-    else params.scope = SCOPES;
+    if (configId && Deno.env.get("META_USE_CONFIG") === "true") {
+      params.config_id = configId;
+      params.override_default_response_type = "true";
+    } else {
+      params.scope = SCOPES;
+    }
     const url = `https://www.facebook.com/${version()}/dialog/oauth?${new URLSearchParams(params)}`;
     return json({ url });
   }
