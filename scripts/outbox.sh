@@ -74,3 +74,20 @@ for dir in outbox/*/; do
     echo "::notice::Programmée sur « $acc_name » pour $at : $title"
   done
 done
+
+# --- Nettoyage : anciennes versions remplacées (lot illustré du 17/10) encore en attente ---
+sql "delete from public.posts where media_path like '%2026-10-motivation-enseignants%' and status in ('scheduled','pending_approval');" >/dev/null || true
+
+# --- Bilan : une seule ligne lisible dans le résumé GitHub ---
+summary=$(sql "select count(*) filter (where status = 'scheduled') as prog,
+                      count(*) filter (where status = 'published') as pub,
+                      count(*) filter (where status = 'failed') as ko,
+                      count(*) filter (where media_type = 'video') as vid,
+                      (select count(*) from (select scheduled_at from public.posts p2
+                         join public.accounts a2 on a2.id = p2.account_id
+                         where a2.platform = 'facebook' and p2.status <> 'cancelled'
+                         group by p2.account_id, scheduled_at having count(*) > 1) d) as doublons,
+                      min(scheduled_at) as debut, max(scheduled_at) as fin
+               from public.posts p join public.accounts a on a.id = p.account_id
+               where a.platform = 'facebook' and p.status <> 'cancelled'")
+echo "::notice::BILAN $(jq -c '.[0]' <<<"$summary")"
