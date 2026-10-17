@@ -1,0 +1,22 @@
+# Programme dans Pilote les publications préparées par Claude (dossier outbox/).
+name: Boîte d'envoi Pilote
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["outbox/**"]
+
+permissions:
+  contents: read
+
+jobs:
+  outbox:
+    name: Programmer les publications
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Envoyer vers Pilote
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: bash scripts/outbox.sh
