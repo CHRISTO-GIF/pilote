@@ -44,8 +44,13 @@ for dir in outbox/*/; do
     # Image → stockage « media » (remplacée si elle existe déjà)
     img=$(jq -r .image <<<"$p")
     path="$uid/$(basename "$dir")-$(basename "$img")"
+    case "$img" in
+      *.mp4) ctype="video/mp4"; mtype="video" ;;
+      *.jpg|*.jpeg) ctype="image/jpeg"; mtype="image" ;;
+      *) ctype="image/png"; mtype="image" ;;
+    esac
     curl -sS --fail-with-body -X POST "https://$REF.supabase.co/storage/v1/object/media/$path" \
-      -H "Authorization: Bearer $SERVICE" -H "apikey: $SERVICE" -H "x-upsert: true" -H "Content-Type: image/png" \
+      -H "Authorization: Bearer $SERVICE" -H "apikey: $SERVICE" -H "x-upsert: true" -H "Content-Type: $ctype" \
       --data-binary "@$dir/$img" >/dev/null
 
     title=$(jq -r .title <<<"$p"); caption=$(jq -r .caption <<<"$p")
@@ -53,7 +58,7 @@ for dir in outbox/*/; do
     exists=$(sql "select count(*)::int as c from public.posts where account_id = '$acc_id' and scheduled_at = '$at'::timestamptz" | jq -r '.[0].c')
     if [ "$exists" != "0" ]; then
       # Mise à jour du texte et de l'image tant que la publication n'est pas partie
-      sql "update public.posts set caption = \$c\$${caption}\$c\$, media_path = '$path'
+      sql "update public.posts set caption = \$c\$${caption}\$c\$, media_path = '$path', media_type = '$mtype'
            where account_id = '$acc_id' and scheduled_at = '$at'::timestamptz and status in ('scheduled','pending_approval','failed');
            update public.content_items set body = \$c\$${caption}\$c\$ where user_id = '$uid' and media_path = '$path';" >/dev/null
       echo "::notice::Mise à jour sur « $acc_name » pour $at : $title"
@@ -62,10 +67,10 @@ for dir in outbox/*/; do
     tags=$(jq -r '[.tags[] | "\"" + . + "\""] | join(",")' <<<"$p")
     sql "with item as (
            insert into public.content_items (user_id, title, body, media_path, media_type, tags, use_count, last_used_at)
-           values ('$uid', \$t\$${title}\$t\$, \$c\$${caption}\$c\$, '$path', 'image', '{${tags}}', 1, now())
+           values ('$uid', \$t\$${title}\$t\$, \$c\$${caption}\$c\$, '$path', '$mtype', '{${tags}}', 1, now())
            returning id)
          insert into public.posts (user_id, account_id, content_item_id, caption, media_path, media_type, scheduled_at, status)
-         select '$uid', '$acc_id', item.id, \$c\$${caption}\$c\$, '$path', 'image', '$at'::timestamptz, 'scheduled' from item" >/dev/null
+         select '$uid', '$acc_id', item.id, \$c\$${caption}\$c\$, '$path', '$mtype', '$at'::timestamptz, 'scheduled' from item" >/dev/null
     echo "::notice::Programmée sur « $acc_name » pour $at : $title"
   done
 done
