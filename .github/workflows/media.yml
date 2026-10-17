@@ -1,0 +1,29 @@
+# Récupère les photos/vidéos candidates et publie les aperçus sur la branche « media-candidates ».
+name: Médias candidats
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["media/candidates.json"]
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Télécharger et préparer les aperçus
+        run: bash scripts/fetch-media.sh out
+      - name: Publier les aperçus (sans les vidéos brutes)
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          rm -rf out/videos
+          cd out
+          git init -q && git checkout -q -b media-candidates
+          git add -A
+          git -c user.name="github-actions" -c user.email="actions@github.com" commit -qm "Médias candidats ${GITHUB_SHA::7}"
+          git push -qf "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" media-candidates
