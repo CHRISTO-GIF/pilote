@@ -1,0 +1,33 @@
+# Monte les vidéos du mois (media/edits) et publie le résultat sur la branche « media-out ».
+name: Montage vidéo
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["media/edits/**", "scripts/make-videos.py"]
+
+permissions:
+  contents: write
+
+jobs:
+  montage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Installer ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
+      - name: Monter les vidéos
+        run: |
+          set -o pipefail
+          mkdir -p out
+          python3 scripts/make-videos.py out 2>&1 | tee out/log.txt
+      - name: Publier
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd out
+          git init -q && git checkout -q -b media-out
+          git add -A
+          git -c user.name="github-actions" -c user.email="actions@github.com" commit -qm "Vidéos montées ${GITHUB_SHA::7}"
+          git push -qf "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" media-out

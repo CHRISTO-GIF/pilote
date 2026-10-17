@@ -1,0 +1,140 @@
+{
+  "journee": {
+    "title": "Une journée d'école",
+    "segments": [
+      {
+        "src": "32778876",
+        "start": 0.0,
+        "dur": 7.5,
+        "text": "Ils arrivent tôt."
+      },
+      {
+        "src": "32778876",
+        "start": 9.0,
+        "dur": 7.5,
+        "text": "Ils écoutent."
+      },
+      {
+        "src": "29430344",
+        "start": 0.5,
+        "dur": 8.0,
+        "text": "Ils rient aussi."
+      },
+      {
+        "src": "32778875",
+        "start": 0.5,
+        "dur": 8.0,
+        "text": "Ils réfléchissent."
+      },
+      {
+        "src": "11025452",
+        "start": 1.0,
+        "dur": 8.0,
+        "text": "Ils écrivent leur avenir."
+      }
+    ],
+    "end": "Merci à ceux qui les guident."
+  },
+  "main": {
+    "title": "La main levée",
+    "segments": [
+      {
+        "src": "5904549",
+        "start": 0.5,
+        "dur": 9.0,
+        "text": "Le jour où un élève timide lève la main…"
+      },
+      {
+        "src": "5897643",
+        "start": 0.5,
+        "dur": 9.0,
+        "text": "…c'est qu'un enseignant lui a donné confiance."
+      },
+      {
+        "src": "5897653",
+        "start": 0.0,
+        "dur": 9.0,
+        "text": "Merci pour ces petits gestes qui changent tout."
+      }
+    ],
+    "end": "Croire en eux. Toujours."
+  },
+  "aube": {
+    "title": "Nouvelle page",
+    "segments": [
+      {
+        "src": "36441545",
+        "start": 2.0,
+        "dur": 10.0,
+        "text": "Hier est derrière nous."
+      },
+      {
+        "src": "36441545",
+        "start": 14.0,
+        "dur": 10.0,
+        "text": "Le soleil se lève encore."
+      },
+      {
+        "src": "36441545",
+        "start": 28.0,
+        "dur": 10.0,
+        "text": "Demain matin, une nouvelle page."
+      }
+    ],
+    "end": "On recommence."
+  },
+  "ecrire": {
+    "title": "Écrire, recommencer",
+    "segments": [
+      {
+        "src": "11025452",
+        "start": 0.5,
+        "dur": 9.0,
+        "text": "Écrire."
+      },
+      {
+        "src": "8617390",
+        "start": 0.0,
+        "dur": 8.5,
+        "text": "Se tromper. Effacer."
+      },
+      {
+        "src": "8927661",
+        "start": 2.0,
+        "dur": 10.0,
+        "text": "Recommencer."
+      },
+      {
+        "src": "32778875",
+        "start": 1.0,
+        "dur": 8.0,
+        "text": "Et un jour, ça devient facile."
+      }
+    ],
+    "end": "L'erreur est une étape."
+  },
+  "chemin": {
+    "title": "Le chemin",
+    "segments": [
+      {
+        "src": "37471477",
+        "start": 2.0,
+        "dur": 12.0,
+        "text": "Le chemin est long."
+      },
+      {
+        "src": "30783914",
+        "start": 0.0,
+        "dur": 10.0,
+        "text": "Mais chaque pas compte."
+      },
+      {
+        "src": "37471477",
+        "start": 26.0,
+        "dur": 12.0,
+        "text": "Continuez d'avancer."
+      }
+    ],
+    "end": "Courage pour la suite."
+  }
+}

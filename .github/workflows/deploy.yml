@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths-ignore: ["outbox/**", "media/**", "scripts/fetch-media.sh", ".github/workflows/media.yml", ".github/workflows/outbox.yml"]
+    paths-ignore: ["outbox/**", "media/**", "scripts/fetch-media.sh", ".github/workflows/media.yml", ".github/workflows/outbox.yml", "scripts/make-videos.py", ".github/workflows/make-videos.yml"]
 
 permissions:
   contents: write
