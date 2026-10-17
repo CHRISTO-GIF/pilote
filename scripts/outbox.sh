@@ -41,10 +41,7 @@ for dir in outbox/*/; do
     fi
     acc_id=$(jq -r '.[0].id' <<<"$acc"); uid=$(jq -r '.[0].user_id' <<<"$acc"); acc_name=$(jq -r '.[0].name' <<<"$acc")
 
-    exists=$(sql "select count(*)::int as c from public.posts where account_id = '$acc_id' and scheduled_at = '$at'::timestamptz" | jq -r '.[0].c')
-    if [ "$exists" != "0" ]; then echo "✓ Déjà programmée : « $acc_name » à $at"; continue; fi
-
-    # Image → stockage « media »
+    # Image → stockage « media » (remplacée si elle existe déjà)
     img=$(jq -r .image <<<"$p")
     path="$uid/$(basename "$dir")-$(basename "$img")"
     curl -sS --fail-with-body -X POST "https://$REF.supabase.co/storage/v1/object/media/$path" \
@@ -52,6 +49,16 @@ for dir in outbox/*/; do
       --data-binary "@$dir/$img" >/dev/null
 
     title=$(jq -r .title <<<"$p"); caption=$(jq -r .caption <<<"$p")
+
+    exists=$(sql "select count(*)::int as c from public.posts where account_id = '$acc_id' and scheduled_at = '$at'::timestamptz" | jq -r '.[0].c')
+    if [ "$exists" != "0" ]; then
+      # Mise à jour du texte et de l'image tant que la publication n'est pas partie
+      sql "update public.posts set caption = \$c\$${caption}\$c\$, media_path = '$path'
+           where account_id = '$acc_id' and scheduled_at = '$at'::timestamptz and status in ('scheduled','pending_approval','failed');
+           update public.content_items set body = \$c\$${caption}\$c\$ where user_id = '$uid' and media_path = '$path';" >/dev/null
+      echo "::notice::Mise à jour sur « $acc_name » pour $at : $title"
+      continue
+    fi
     tags=$(jq -r '[.tags[] | "\"" + . + "\""] | join(",")' <<<"$p")
     sql "with item as (
            insert into public.content_items (user_id, title, body, media_path, media_type, tags, use_count, last_used_at)
