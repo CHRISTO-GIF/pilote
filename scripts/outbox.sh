@@ -61,7 +61,7 @@ for dir in outbox/*/; do
       sql "update public.posts set caption = \$c\$${caption}\$c\$, media_path = '$path', media_type = '$mtype'
            where account_id = '$acc_id' and scheduled_at = '$at'::timestamptz and status in ('scheduled','pending_approval','failed');
            update public.content_items set body = \$c\$${caption}\$c\$ where user_id = '$uid' and media_path = '$path';" >/dev/null
-      echo "::notice::Mise à jour sur « $acc_name » pour $at : $title"
+      echo "Mise à jour sur « $acc_name » pour $at : $title"
       continue
     fi
     tags=$(jq -r '[.tags[] | "\"" + . + "\""] | join(",")' <<<"$p")
@@ -71,7 +71,7 @@ for dir in outbox/*/; do
            returning id)
          insert into public.posts (user_id, account_id, content_item_id, caption, media_path, media_type, scheduled_at, status)
          select '$uid', '$acc_id', item.id, \$c\$${caption}\$c\$, '$path', '$mtype', '$at'::timestamptz, 'scheduled' from item" >/dev/null
-    echo "::notice::Programmée sur « $acc_name » pour $at : $title"
+    echo "Programmée sur « $acc_name » pour $at : $title"
   done
 done
 
