@@ -1,0 +1,44 @@
+# Génère les voix off (fichiers media/voix/*.json) et les dépose sur la branche voix-out.
+name: Voix off
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["media/voix/**"]
+
+permissions:
+  contents: write
+
+jobs:
+  tts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Générer les voix
+        run: |
+          pip install -q edge-tts
+          mkdir -p out
+          for f in media/voix/*.json; do
+            name=$(basename "$f" .json)
+            voice=$(jq -r .voice "$f"); rate=$(jq -r '.rate // "+0%"' "$f")
+            for k in $(jq -r '.lines | keys[]' "$f"); do
+              jq -r ".lines[\"$k\"]" "$f" > /tmp/t.txt
+              for try in 1 2 3; do
+                edge-tts --voice "$voice" --rate="$rate" -f /tmp/t.txt --write-media "out/$name-$k.mp3" && break
+                sleep 5
+              done
+            done
+          done
+          ls -la out
+      - name: Publier sur la branche voix-out
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd out
+          git init -q && git checkout -q -b voix-out && git add -A
+          git -c user.name="github-actions" -c user.email="actions@github.com" commit -qm "Voix ${GITHUB_SHA::7}"
+          git push -qf "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" voix-out
