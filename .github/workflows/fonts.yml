@@ -1,0 +1,36 @@
+# Récupère des polices libres (OFL, Google Fonts) pour les visuels et les dépose sur la branche « fonts ».
+name: Polices
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [".github/workflows/fonts.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  fonts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Télécharger
+        run: |
+          mkdir out && cd out
+          base=https://raw.githubusercontent.com/google/fonts/main
+          for p in "ofl/cinzel/Cinzel[wght].ttf" "ofl/cinzeldecorative/CinzelDecorative-Bold.ttf" "ofl/cinzeldecorative/CinzelDecorative-Black.ttf" \
+                   "ofl/cormorantgaramond/CormorantGaramond[wght].ttf" "ofl/cormorantgaramond/CormorantGaramond-Italic[wght].ttf" \
+                   "ofl/playfairdisplay/PlayfairDisplay[wght].ttf" "ofl/playfairdisplay/PlayfairDisplay-Italic[wght].ttf" \
+                   "ofl/pinyonscript/PinyonScript-Regular.ttf" "ofl/greatvibes/GreatVibes-Regular.ttf" "ofl/italiana/Italiana-Regular.ttf" \
+                   "ofl/bodonimoda/BodoniModa[opsz,wght].ttf" "ofl/marcellus/Marcellus-Regular.ttf" "ofl/montserrat/Montserrat[wght].ttf"; do
+            enc=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1]))" "$p")
+            curl -fsSL -o "$(basename "$p" | tr -d '[]' | tr ',' '-')" "$base/$enc" || echo "manque $p"
+          done
+          ls -la
+      - name: Publier
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd out && git init -q && git checkout -q -b fonts && git add -A
+          git -c user.name="github-actions" -c user.email="actions@github.com" commit -qm "Polices"
+          git push -qf "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" fonts
