@@ -55,16 +55,16 @@ for dir in outbox/*/; do
 
     title=$(jq -r .title <<<"$p"); caption=$(jq -r .caption <<<"$p")
 
+    tags=$(jq -r '[.tags[] | "\"" + . + "\""] | join(",")' <<<"$p")
     exists=$(sql "select count(*)::int as c from public.posts where account_id = '$acc_id' and scheduled_at = '$at'::timestamptz" | jq -r '.[0].c')
     if [ "$exists" != "0" ]; then
       # Mise à jour du texte et de l'image tant que la publication n'est pas partie
       sql "update public.posts set caption = \$c\$${caption}\$c\$, media_path = '$path', media_type = '$mtype'
            where account_id = '$acc_id' and scheduled_at = '$at'::timestamptz and status in ('scheduled','pending_approval','failed');
-           update public.content_items set body = \$c\$${caption}\$c\$ where user_id = '$uid' and media_path = '$path';" >/dev/null
+           update public.content_items set body = \$c\$${caption}\$c\$, tags = '{${tags}}' where user_id = '$uid' and media_path = '$path';" >/dev/null
       echo "Mise à jour sur « $acc_name » pour $at : $title"
       continue
     fi
-    tags=$(jq -r '[.tags[] | "\"" + . + "\""] | join(",")' <<<"$p")
     sql "with item as (
            insert into public.content_items (user_id, title, body, media_path, media_type, tags, use_count, last_used_at)
            values ('$uid', \$t\$${title}\$t\$, \$c\$${caption}\$c\$, '$path', '$mtype', '{${tags}}', 1, now())

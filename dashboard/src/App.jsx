@@ -7,10 +7,12 @@ import Accounts from "./pages/Accounts.jsx";
 import Library from "./pages/Library.jsx";
 import Schedules from "./pages/Schedules.jsx";
 import Posts from "./pages/Posts.jsx";
+import Comments from "./pages/Comments.jsx";
 
 const TABS = [
   { id: "overview", label: "Accueil", icon: "◎", el: Overview },
   { id: "posts", label: "Publications", icon: "▤", el: Posts },
+  { id: "comments", label: "Commentaires", icon: "✉", el: Comments },
   { id: "schedules", label: "Planning", icon: "◷", el: Schedules },
   { id: "library", label: "Bibliothèque", icon: "▦", el: Library },
   { id: "accounts", label: "Comptes", icon: "⊕", el: Accounts },

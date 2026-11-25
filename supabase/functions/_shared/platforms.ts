@@ -90,7 +90,7 @@ export async function checkAccount(platform: Platform, externalId: string, token
 // ---------------------------------------------------------------------
 const graphBase = () => `https://graph.facebook.com/${Deno.env.get("META_GRAPH_VERSION") ?? "v23.0"}`;
 
-async function graphPost(path: string, params: Record<string, string>) {
+export async function graphPost(path: string, params: Record<string, string>) {
   const res = await fetch(graphBase() + path, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -101,7 +101,7 @@ async function graphPost(path: string, params: Record<string, string>) {
   return data;
 }
 
-async function graphGet(path: string, params: Record<string, string>) {
+export async function graphGet(path: string, params: Record<string, string>) {
   const res = await fetch(`${graphBase()}${path}?${new URLSearchParams(params)}`);
   const data = await res.json();
   if (!res.ok || data.error) throw new Error(`Meta : ${data.error?.message ?? res.status}`);

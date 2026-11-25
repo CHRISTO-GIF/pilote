@@ -87,7 +87,7 @@ sql "do \$\$ declare i uuid; begin
   select id into i from vault.secrets where name = 'pilote_cron_secret';
   if i is null then perform vault.create_secret('$CRON_SECRET', 'pilote_cron_secret'); else perform vault.update_secret(i, '$CRON_SECRET'); end if;
 end \$\$;"
-for job in "pilote-planner|7 * * * *|planner|{\"days\": 7}|120000" "pilote-publisher|*/5 * * * *|publisher|{}|140000"; do
+for job in "pilote-planner|7 * * * *|planner|{\"days\": 7}|120000" "pilote-publisher|*/5 * * * *|publisher|{}|140000" "pilote-comments|*/15 * * * *|comment-agent|{}|140000"; do
   IFS='|' read -r name cronexp fn body timeout <<<"$job"
   sql "select cron.schedule('$name', '$cronexp', \$cmd\$
     select net.http_post(

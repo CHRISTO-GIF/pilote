@@ -60,7 +60,8 @@ Deno.serve(async (req) => {
       params.config_id = configId;
       params.override_default_response_type = "true";
     } else {
-      params.scope = SCOPES;
+      // b.comments : autorisations supplémentaires pour l'agent de commentaires (lire et répondre)
+      params.scope = b.comments ? `${SCOPES},pages_read_user_content,pages_manage_engagement` : SCOPES;
     }
     const url = `https://www.facebook.com/${version()}/dialog/oauth?${new URLSearchParams(params)}`;
     return json({ url });
