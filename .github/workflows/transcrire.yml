@@ -1,0 +1,43 @@
+# Transcrit les fichiers audio de media/transcrire/ (Whisper) et dépose le texte minuté sur la branche transcriptions.
+name: Transcription
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["media/transcrire/**"]
+
+permissions:
+  contents: write
+
+jobs:
+  whisper:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Transcrire
+        run: |
+          pip install -q faster-whisper
+          mkdir -p out
+          python - <<'PY'
+          import glob, json, os
+          from faster_whisper import WhisperModel
+          m = WhisperModel("medium", device="cpu", compute_type="int8")
+          for f in sorted(glob.glob("media/transcrire/*")):
+              segs, info = m.transcribe(f, language="fr", beam_size=5, word_timestamps=True, vad_filter=True)
+              out = [{"start": s.start, "end": s.end, "text": s.text.strip(),
+                      "words": [{"start": w.start, "end": w.end, "w": w.word} for w in (s.words or [])]} for s in segs]
+              name = os.path.splitext(os.path.basename(f))[0]
+              json.dump(out, open(f"out/{name}.json", "w"), ensure_ascii=False, indent=1)
+              print(name, len(out), "segments")
+          PY
+      - name: Publier
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd out && git init -q && git checkout -q -b transcriptions && git add -A
+          git -c user.name="github-actions" -c user.email="actions@github.com" commit -qm "Transcriptions"
+          git push -qf "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" transcriptions
