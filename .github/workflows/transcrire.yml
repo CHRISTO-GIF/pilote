@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["media/transcrire/**"]
+    paths: ["media/transcrire/**", ".github/workflows/transcrire.yml"]
 
 permissions:
   contents: write
@@ -20,7 +20,7 @@ jobs:
           python-version: "3.12"
       - name: Transcrire
         run: |
-          pip install -q faster-whisper
+          pip install -q faster-whisper "av<15"
           mkdir -p out
           python - <<'PY'
           import glob, json, os
