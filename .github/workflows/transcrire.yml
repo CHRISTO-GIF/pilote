@@ -20,14 +20,17 @@ jobs:
           python-version: "3.12"
       - name: Transcrire
         run: |
-          pip install -q faster-whisper "av<15"
+          pip install -q faster-whisper numpy
           mkdir -p out
           python - <<'PY'
-          import glob, json, os
+          import glob, json, os, wave
+          import numpy as np
           from faster_whisper import WhisperModel
           m = WhisperModel("medium", device="cpu", compute_type="int8")
-          for f in sorted(glob.glob("media/transcrire/*")):
-              segs, info = m.transcribe(f, language="fr", beam_size=5, word_timestamps=True, vad_filter=True)
+          for f in sorted(glob.glob("media/transcrire/*.wav")):
+              with wave.open(f) as w:   # WAV 16 kHz mono 16 bits (lu sans PyAV)
+                  audio = np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float32) / 32768
+              segs, info = m.transcribe(audio, language="fr", beam_size=5, word_timestamps=True, vad_filter=True)
               out = [{"start": s.start, "end": s.end, "text": s.text.strip(),
                       "words": [{"start": w.start, "end": w.end, "w": w.word} for w in (s.words or [])]} for s in segs]
               name = os.path.splitext(os.path.basename(f))[0]
