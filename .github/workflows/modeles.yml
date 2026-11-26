@@ -1,0 +1,31 @@
+# Télécharge des modèles libres de détourage (rembg) et les dépose, découpés, sur la branche « modeles ».
+name: Modèles de détourage
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [".github/workflows/modeles.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  get:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Télécharger
+        run: |
+          mkdir out && cd out
+          for m in isnet-general-use u2net_human_seg; do
+            curl -fsSL -o $m.onnx "https://github.com/danielgatis/rembg/releases/download/v0.0.0/$m.onnx"
+            split -b 45m -d $m.onnx $m.onnx.part && rm $m.onnx
+          done
+          ls -la
+      - name: Publier
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd out && git init -q && git checkout -q -b modeles && git add -A
+          git -c user.name="github-actions" -c user.email="actions@github.com" commit -qm "Modèles"
+          git push -qf "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" modeles
