@@ -30,12 +30,15 @@ jobs:
           for f in sorted(glob.glob("media/transcrire/*.wav")):
               with wave.open(f) as w:   # WAV 16 kHz mono 16 bits (lu sans PyAV)
                   audio = np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float32) / 32768
-              segs, info = m.transcribe(audio, language="fr", beam_size=5, word_timestamps=True, vad_filter=True)
+              lang = None if f.endswith("_auto.wav") else "fr"
+              segs, info = m.transcribe(audio, language=lang, beam_size=5, word_timestamps=True, vad_filter=True)
               out = [{"start": s.start, "end": s.end, "text": s.text.strip(),
                       "words": [{"start": w.start, "end": w.end, "w": w.word} for w in (s.words or [])]} for s in segs]
               name = os.path.splitext(os.path.basename(f))[0]
               json.dump(out, open(f"out/{name}.json", "w"), ensure_ascii=False, indent=1)
-              print(name, len(out), "segments")
+              print(name, len(out), "segments", info.language, info.language_probability)
+              out = {"language": info.language, "prob": info.language_probability, "segments": out} if lang is None else out
+              json.dump(out, open(f"out/{name}.json", "w"), ensure_ascii=False, indent=1)
           PY
       - name: Publier
         env:
