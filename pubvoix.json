@@ -1,0 +1,1954 @@
+[
+ {
+  "start": 0.0,
+  "end": 4.92,
+  "text": "Tu veux te lancer dans l'installation des panneaux solaires, mais tu ne sais pas par où commencer ?",
+  "words": [
+   {
+    "start": 0.0,
+    "end": 0.3,
+    "w": " Tu"
+   },
+   {
+    "start": 0.3,
+    "end": 0.4,
+    "w": " veux"
+   },
+   {
+    "start": 0.4,
+    "end": 0.58,
+    "w": " te"
+   },
+   {
+    "start": 0.58,
+    "end": 0.8,
+    "w": " lancer"
+   },
+   {
+    "start": 0.8,
+    "end": 0.92,
+    "w": " dans"
+   },
+   {
+    "start": 0.92,
+    "end": 1.02,
+    "w": " l"
+   },
+   {
+    "start": 1.02,
+    "end": 1.42,
+    "w": "'installation"
+   },
+   {
+    "start": 1.42,
+    "end": 1.58,
+    "w": " des"
+   },
+   {
+    "start": 1.58,
+    "end": 1.82,
+    "w": " panneaux"
+   },
+   {
+    "start": 1.82,
+    "end": 2.32,
+    "w": " solaires,"
+   },
+   {
+    "start": 2.48,
+    "end": 2.64,
+    "w": " mais"
+   },
+   {
+    "start": 2.64,
+    "end": 2.76,
+    "w": " tu"
+   },
+   {
+    "start": 2.76,
+    "end": 2.86,
+    "w": " ne"
+   },
+   {
+    "start": 2.86,
+    "end": 2.98,
+    "w": " sais"
+   },
+   {
+    "start": 2.98,
+    "end": 3.12,
+    "w": " pas"
+   },
+   {
+    "start": 3.12,
+    "end": 3.26,
+    "w": " par"
+   },
+   {
+    "start": 3.26,
+    "end": 3.4,
+    "w": " où"
+   },
+   {
+    "start": 3.4,
+    "end": 3.72,
+    "w": " commencer"
+   },
+   {
+    "start": 3.72,
+    "end": 4.92,
+    "w": " ?"
+   }
+  ]
+ },
+ {
+  "start": 4.92,
+  "end": 11.72,
+  "text": "Tu fais déjà des installations, mais le dimensionnement te dépasse, et tes installations ne supportent pas les charges ?",
+  "words": [
+   {
+    "start": 4.92,
+    "end": 5.04,
+    "w": " Tu"
+   },
+   {
+    "start": 5.04,
+    "end": 5.16,
+    "w": " fais"
+   },
+   {
+    "start": 5.16,
+    "end": 5.46,
+    "w": " déjà"
+   },
+   {
+    "start": 5.46,
+    "end": 5.7,
+    "w": " des"
+   },
+   {
+    "start": 5.7,
+    "end": 6.12,
+    "w": " installations,"
+   },
+   {
+    "start": 6.48,
+    "end": 6.6,
+    "w": " mais"
+   },
+   {
+    "start": 6.6,
+    "end": 6.82,
+    "w": " le"
+   },
+   {
+    "start": 6.82,
+    "end": 7.2,
+    "w": " dimensionnement"
+   },
+   {
+    "start": 7.2,
+    "end": 7.4,
+    "w": " te"
+   },
+   {
+    "start": 7.4,
+    "end": 7.86,
+    "w": " dépasse,"
+   },
+   {
+    "start": 8.08,
+    "end": 8.2,
+    "w": " et"
+   },
+   {
+    "start": 8.2,
+    "end": 8.38,
+    "w": " tes"
+   },
+   {
+    "start": 8.38,
+    "end": 8.78,
+    "w": " installations"
+   },
+   {
+    "start": 8.78,
+    "end": 9.04,
+    "w": " ne"
+   },
+   {
+    "start": 9.04,
+    "end": 9.26,
+    "w": " supportent"
+   },
+   {
+    "start": 9.26,
+    "end": 9.4,
+    "w": " pas"
+   },
+   {
+    "start": 9.4,
+    "end": 9.56,
+    "w": " les"
+   },
+   {
+    "start": 9.56,
+    "end": 9.86,
+    "w": " charges"
+   },
+   {
+    "start": 9.86,
+    "end": 11.72,
+    "w": " ?"
+   }
+  ]
+ },
+ {
+  "start": 11.72,
+  "end": 17.5,
+  "text": "Tu veux faire de l'électricité bâtiment, mais tu ne maîtrises pas les câblages, simples allumages, doubles allumages, va et vient.",
+  "words": [
+   {
+    "start": 11.72,
+    "end": 11.9,
+    "w": " Tu"
+   },
+   {
+    "start": 11.9,
+    "end": 12.04,
+    "w": " veux"
+   },
+   {
+    "start": 12.04,
+    "end": 12.26,
+    "w": " faire"
+   },
+   {
+    "start": 12.26,
+    "end": 12.38,
+    "w": " de"
+   },
+   {
+    "start": 12.38,
+    "end": 12.44,
+    "w": " l"
+   },
+   {
+    "start": 12.44,
+    "end": 12.94,
+    "w": "'électricité"
+   },
+   {
+    "start": 12.94,
+    "end": 13.38,
+    "w": " bâtiment,"
+   },
+   {
+    "start": 13.64,
+    "end": 13.76,
+    "w": " mais"
+   },
+   {
+    "start": 13.76,
+    "end": 13.92,
+    "w": " tu"
+   },
+   {
+    "start": 13.92,
+    "end": 14.02,
+    "w": " ne"
+   },
+   {
+    "start": 14.02,
+    "end": 14.26,
+    "w": " maîtrises"
+   },
+   {
+    "start": 14.26,
+    "end": 14.42,
+    "w": " pas"
+   },
+   {
+    "start": 14.42,
+    "end": 14.58,
+    "w": " les"
+   },
+   {
+    "start": 14.58,
+    "end": 15.08,
+    "w": " câblages,"
+   },
+   {
+    "start": 15.32,
+    "end": 15.46,
+    "w": " simples"
+   },
+   {
+    "start": 15.46,
+    "end": 15.98,
+    "w": " allumages,"
+   },
+   {
+    "start": 16.18,
+    "end": 16.34,
+    "w": " doubles"
+   },
+   {
+    "start": 16.34,
+    "end": 16.9,
+    "w": " allumages,"
+   },
+   {
+    "start": 17.12,
+    "end": 17.2,
+    "w": " va"
+   },
+   {
+    "start": 17.2,
+    "end": 17.36,
+    "w": " et"
+   },
+   {
+    "start": 17.36,
+    "end": 17.5,
+    "w": " vient."
+   }
+  ]
+ },
+ {
+  "start": 18.66,
+  "end": 23.88,
+  "text": "Bref, tu veux apprendre l'électricité bâtiment et l'énergie solaire, sans savoir par où commencer ?",
+  "words": [
+   {
+    "start": 18.66,
+    "end": 19.06,
+    "w": " Bref,"
+   },
+   {
+    "start": 19.34,
+    "end": 19.42,
+    "w": " tu"
+   },
+   {
+    "start": 19.42,
+    "end": 19.58,
+    "w": " veux"
+   },
+   {
+    "start": 19.58,
+    "end": 19.84,
+    "w": " apprendre"
+   },
+   {
+    "start": 19.84,
+    "end": 19.92,
+    "w": " l"
+   },
+   {
+    "start": 19.92,
+    "end": 20.46,
+    "w": "'électricité"
+   },
+   {
+    "start": 20.46,
+    "end": 20.8,
+    "w": " bâtiment"
+   },
+   {
+    "start": 20.8,
+    "end": 20.9,
+    "w": " et"
+   },
+   {
+    "start": 20.9,
+    "end": 20.96,
+    "w": " l"
+   },
+   {
+    "start": 20.96,
+    "end": 21.24,
+    "w": "'énergie"
+   },
+   {
+    "start": 21.24,
+    "end": 21.74,
+    "w": " solaire,"
+   },
+   {
+    "start": 21.94,
+    "end": 22.04,
+    "w": " sans"
+   },
+   {
+    "start": 22.04,
+    "end": 22.28,
+    "w": " savoir"
+   },
+   {
+    "start": 22.28,
+    "end": 22.46,
+    "w": " par"
+   },
+   {
+    "start": 22.46,
+    "end": 22.64,
+    "w": " où"
+   },
+   {
+    "start": 22.64,
+    "end": 22.92,
+    "w": " commencer"
+   },
+   {
+    "start": 22.92,
+    "end": 23.88,
+    "w": " ?"
+   }
+  ]
+ },
+ {
+  "start": 23.88,
+  "end": 26.32,
+  "text": "J'ai une bonne nouvelle pour toi !",
+  "words": [
+   {
+    "start": 23.88,
+    "end": 24.0,
+    "w": " J"
+   },
+   {
+    "start": 24.0,
+    "end": 24.08,
+    "w": "'ai"
+   },
+   {
+    "start": 24.08,
+    "end": 24.22,
+    "w": " une"
+   },
+   {
+    "start": 24.22,
+    "end": 24.4,
+    "w": " bonne"
+   },
+   {
+    "start": 24.4,
+    "end": 24.62,
+    "w": " nouvelle"
+   },
+   {
+    "start": 24.62,
+    "end": 24.88,
+    "w": " pour"
+   },
+   {
+    "start": 24.88,
+    "end": 25.26,
+    "w": " toi"
+   },
+   {
+    "start": 25.26,
+    "end": 26.32,
+    "w": " !"
+   }
+  ]
+ },
+ {
+  "start": 26.32,
+  "end": 35.04,
+  "text": "Après avoir formé de nombreux jeunes autogos, l'auteur a décidé d'écrire un guide, pour tous ceux qui ne peuvent pas le rencontrer en personne, apprendre, et réussir leurs installations, ou qu'il soit.",
+  "words": [
+   {
+    "start": 26.32,
+    "end": 26.5,
+    "w": " Après"
+   },
+   {
+    "start": 26.5,
+    "end": 26.88,
+    "w": " avoir"
+   },
+   {
+    "start": 26.88,
+    "end": 27.06,
+    "w": " formé"
+   },
+   {
+    "start": 27.06,
+    "end": 27.24,
+    "w": " de"
+   },
+   {
+    "start": 27.24,
+    "end": 27.48,
+    "w": " nombreux"
+   },
+   {
+    "start": 27.48,
+    "end": 27.68,
+    "w": " jeunes"
+   },
+   {
+    "start": 27.68,
+    "end": 28.12,
+    "w": " autogos,"
+   },
+   {
+    "start": 28.34,
+    "end": 28.44,
+    "w": " l"
+   },
+   {
+    "start": 28.44,
+    "end": 28.62,
+    "w": "'auteur"
+   },
+   {
+    "start": 28.62,
+    "end": 28.8,
+    "w": " a"
+   },
+   {
+    "start": 28.8,
+    "end": 29.04,
+    "w": " décidé"
+   },
+   {
+    "start": 29.04,
+    "end": 29.18,
+    "w": " d"
+   },
+   {
+    "start": 29.18,
+    "end": 29.38,
+    "w": "'écrire"
+   },
+   {
+    "start": 29.38,
+    "end": 29.58,
+    "w": " un"
+   },
+   {
+    "start": 29.58,
+    "end": 29.76,
+    "w": " guide,"
+   },
+   {
+    "start": 30.12,
+    "end": 30.24,
+    "w": " pour"
+   },
+   {
+    "start": 30.24,
+    "end": 30.44,
+    "w": " tous"
+   },
+   {
+    "start": 30.44,
+    "end": 30.56,
+    "w": " ceux"
+   },
+   {
+    "start": 30.56,
+    "end": 30.66,
+    "w": " qui"
+   },
+   {
+    "start": 30.66,
+    "end": 30.78,
+    "w": " ne"
+   },
+   {
+    "start": 30.78,
+    "end": 30.9,
+    "w": " peuvent"
+   },
+   {
+    "start": 30.9,
+    "end": 31.06,
+    "w": " pas"
+   },
+   {
+    "start": 31.06,
+    "end": 31.22,
+    "w": " le"
+   },
+   {
+    "start": 31.22,
+    "end": 31.6,
+    "w": " rencontrer"
+   },
+   {
+    "start": 31.6,
+    "end": 31.74,
+    "w": " en"
+   },
+   {
+    "start": 31.74,
+    "end": 32.14,
+    "w": " personne,"
+   },
+   {
+    "start": 32.44,
+    "end": 32.72,
+    "w": " apprendre,"
+   },
+   {
+    "start": 33.04,
+    "end": 33.18,
+    "w": " et"
+   },
+   {
+    "start": 33.18,
+    "end": 33.46,
+    "w": " réussir"
+   },
+   {
+    "start": 33.46,
+    "end": 33.66,
+    "w": " leurs"
+   },
+   {
+    "start": 33.66,
+    "end": 34.2,
+    "w": " installations,"
+   },
+   {
+    "start": 34.5,
+    "end": 34.58,
+    "w": " ou"
+   },
+   {
+    "start": 34.58,
+    "end": 34.68,
+    "w": " qu"
+   },
+   {
+    "start": 34.68,
+    "end": 34.78,
+    "w": "'il"
+   },
+   {
+    "start": 34.78,
+    "end": 35.04,
+    "w": " soit."
+   }
+  ]
+ },
+ {
+  "start": 36.14,
+  "end": 38.28,
+  "text": "Ce guide, c'est le livre de l'électricien pro.",
+  "words": [
+   {
+    "start": 36.14,
+    "end": 36.3,
+    "w": " Ce"
+   },
+   {
+    "start": 36.3,
+    "end": 36.66,
+    "w": " guide,"
+   },
+   {
+    "start": 36.88,
+    "end": 36.98,
+    "w": " c"
+   },
+   {
+    "start": 36.98,
+    "end": 37.02,
+    "w": "'est"
+   },
+   {
+    "start": 37.02,
+    "end": 37.12,
+    "w": " le"
+   },
+   {
+    "start": 37.12,
+    "end": 37.28,
+    "w": " livre"
+   },
+   {
+    "start": 37.28,
+    "end": 37.42,
+    "w": " de"
+   },
+   {
+    "start": 37.42,
+    "end": 37.48,
+    "w": " l"
+   },
+   {
+    "start": 37.48,
+    "end": 37.98,
+    "w": "'électricien"
+   },
+   {
+    "start": 37.98,
+    "end": 38.28,
+    "w": " pro."
+   }
+  ]
+ },
+ {
+  "start": 39.1,
+  "end": 47.12,
+  "text": "Dans le module électricité bâtiment, tu apprends les différents câblages, les mesures de sécurité, les sections de câble à respecter, les protections et la mise à la terre.",
+  "words": [
+   {
+    "start": 39.1,
+    "end": 39.2,
+    "w": " Dans"
+   },
+   {
+    "start": 39.2,
+    "end": 39.38,
+    "w": " le"
+   },
+   {
+    "start": 39.38,
+    "end": 39.54,
+    "w": " module"
+   },
+   {
+    "start": 39.54,
+    "end": 40.1,
+    "w": " électricité"
+   },
+   {
+    "start": 40.1,
+    "end": 40.52,
+    "w": " bâtiment,"
+   },
+   {
+    "start": 40.88,
+    "end": 40.98,
+    "w": " tu"
+   },
+   {
+    "start": 40.98,
+    "end": 41.18,
+    "w": " apprends"
+   },
+   {
+    "start": 41.18,
+    "end": 41.46,
+    "w": " les"
+   },
+   {
+    "start": 41.46,
+    "end": 41.68,
+    "w": " différents"
+   },
+   {
+    "start": 41.68,
+    "end": 42.22,
+    "w": " câblages,"
+   },
+   {
+    "start": 42.56,
+    "end": 42.68,
+    "w": " les"
+   },
+   {
+    "start": 42.68,
+    "end": 42.86,
+    "w": " mesures"
+   },
+   {
+    "start": 42.86,
+    "end": 43.18,
+    "w": " de"
+   },
+   {
+    "start": 43.18,
+    "end": 43.5,
+    "w": " sécurité,"
+   },
+   {
+    "start": 43.98,
+    "end": 44.12,
+    "w": " les"
+   },
+   {
+    "start": 44.12,
+    "end": 44.36,
+    "w": " sections"
+   },
+   {
+    "start": 44.36,
+    "end": 44.58,
+    "w": " de"
+   },
+   {
+    "start": 44.58,
+    "end": 44.7,
+    "w": " câble"
+   },
+   {
+    "start": 44.7,
+    "end": 44.92,
+    "w": " à"
+   },
+   {
+    "start": 44.92,
+    "end": 45.44,
+    "w": " respecter,"
+   },
+   {
+    "start": 45.72,
+    "end": 45.92,
+    "w": " les"
+   },
+   {
+    "start": 45.92,
+    "end": 46.24,
+    "w": " protections"
+   },
+   {
+    "start": 46.24,
+    "end": 46.38,
+    "w": " et"
+   },
+   {
+    "start": 46.38,
+    "end": 46.46,
+    "w": " la"
+   },
+   {
+    "start": 46.46,
+    "end": 46.56,
+    "w": " mise"
+   },
+   {
+    "start": 46.56,
+    "end": 46.7,
+    "w": " à"
+   },
+   {
+    "start": 46.7,
+    "end": 46.9,
+    "w": " la"
+   },
+   {
+    "start": 46.9,
+    "end": 47.12,
+    "w": " terre."
+   }
+  ]
+ },
+ {
+  "start": 49.82,
+  "end": 52.78,
+  "text": "Dans le module énergie solaire, tu apprends à dimensionner.",
+  "words": [
+   {
+    "start": 49.82,
+    "end": 49.94,
+    "w": " Dans"
+   },
+   {
+    "start": 49.94,
+    "end": 50.14,
+    "w": " le"
+   },
+   {
+    "start": 50.14,
+    "end": 50.3,
+    "w": " module"
+   },
+   {
+    "start": 50.3,
+    "end": 50.68,
+    "w": " énergie"
+   },
+   {
+    "start": 50.68,
+    "end": 51.16,
+    "w": " solaire,"
+   },
+   {
+    "start": 51.34,
+    "end": 51.46,
+    "w": " tu"
+   },
+   {
+    "start": 51.46,
+    "end": 51.68,
+    "w": " apprends"
+   },
+   {
+    "start": 51.68,
+    "end": 51.86,
+    "w": " à"
+   },
+   {
+    "start": 51.86,
+    "end": 52.78,
+    "w": " dimensionner."
+   }
+  ]
+ },
+ {
+  "start": 53.1,
+  "end": 55.76,
+  "text": "Et c'est tellement simple, un fichier Excel fait le calcul pour toi.",
+  "words": [
+   {
+    "start": 53.1,
+    "end": 53.26,
+    "w": " Et"
+   },
+   {
+    "start": 53.26,
+    "end": 53.4,
+    "w": " c"
+   },
+   {
+    "start": 53.4,
+    "end": 53.44,
+    "w": "'est"
+   },
+   {
+    "start": 53.44,
+    "end": 53.7,
+    "w": " tellement"
+   },
+   {
+    "start": 53.7,
+    "end": 53.98,
+    "w": " simple,"
+   },
+   {
+    "start": 54.12,
+    "end": 54.28,
+    "w": " un"
+   },
+   {
+    "start": 54.28,
+    "end": 54.56,
+    "w": " fichier"
+   },
+   {
+    "start": 54.56,
+    "end": 54.8,
+    "w": " Excel"
+   },
+   {
+    "start": 54.8,
+    "end": 54.94,
+    "w": " fait"
+   },
+   {
+    "start": 54.94,
+    "end": 55.16,
+    "w": " le"
+   },
+   {
+    "start": 55.16,
+    "end": 55.34,
+    "w": " calcul"
+   },
+   {
+    "start": 55.34,
+    "end": 55.58,
+    "w": " pour"
+   },
+   {
+    "start": 55.58,
+    "end": 55.76,
+    "w": " toi."
+   }
+  ]
+ },
+ {
+  "start": 56.28,
+  "end": 59.38,
+  "text": "Tu entres tes consommations, et il te donne ton dimensionnement.",
+  "words": [
+   {
+    "start": 56.28,
+    "end": 56.7,
+    "w": " Tu"
+   },
+   {
+    "start": 56.7,
+    "end": 56.98,
+    "w": " entres"
+   },
+   {
+    "start": 56.98,
+    "end": 57.2,
+    "w": " tes"
+   },
+   {
+    "start": 57.2,
+    "end": 57.84,
+    "w": " consommations,"
+   },
+   {
+    "start": 58.06,
+    "end": 58.1,
+    "w": " et"
+   },
+   {
+    "start": 58.1,
+    "end": 58.26,
+    "w": " il"
+   },
+   {
+    "start": 58.26,
+    "end": 58.4,
+    "w": " te"
+   },
+   {
+    "start": 58.4,
+    "end": 58.5,
+    "w": " donne"
+   },
+   {
+    "start": 58.5,
+    "end": 58.76,
+    "w": " ton"
+   },
+   {
+    "start": 58.76,
+    "end": 59.38,
+    "w": " dimensionnement."
+   }
+  ]
+ },
+ {
+  "start": 60.18,
+  "end": 62.7,
+  "text": "Même sans être du métier, tu dimensionnes facilement.",
+  "words": [
+   {
+    "start": 60.18,
+    "end": 60.38,
+    "w": " Même"
+   },
+   {
+    "start": 60.38,
+    "end": 60.58,
+    "w": " sans"
+   },
+   {
+    "start": 60.58,
+    "end": 60.76,
+    "w": " être"
+   },
+   {
+    "start": 60.76,
+    "end": 60.92,
+    "w": " du"
+   },
+   {
+    "start": 60.92,
+    "end": 61.32,
+    "w": " métier,"
+   },
+   {
+    "start": 61.58,
+    "end": 61.74,
+    "w": " tu"
+   },
+   {
+    "start": 61.74,
+    "end": 62.1,
+    "w": " dimensionnes"
+   },
+   {
+    "start": 62.1,
+    "end": 62.7,
+    "w": " facilement."
+   }
+  ]
+ },
+ {
+  "start": 67.24,
+  "end": 70.62,
+  "text": "Le dimensionnement, c'est justement ce qui bloque la plupart des débutants.",
+  "words": [
+   {
+    "start": 67.24,
+    "end": 67.46,
+    "w": " Le"
+   },
+   {
+    "start": 67.46,
+    "end": 68.06,
+    "w": " dimensionnement,"
+   },
+   {
+    "start": 68.3,
+    "end": 68.36,
+    "w": " c"
+   },
+   {
+    "start": 68.36,
+    "end": 68.38,
+    "w": "'est"
+   },
+   {
+    "start": 68.38,
+    "end": 68.74,
+    "w": " justement"
+   },
+   {
+    "start": 68.74,
+    "end": 68.94,
+    "w": " ce"
+   },
+   {
+    "start": 68.94,
+    "end": 69.12,
+    "w": " qui"
+   },
+   {
+    "start": 69.12,
+    "end": 69.26,
+    "w": " bloque"
+   },
+   {
+    "start": 69.26,
+    "end": 69.44,
+    "w": " la"
+   },
+   {
+    "start": 69.44,
+    "end": 69.66,
+    "w": " plupart"
+   },
+   {
+    "start": 69.66,
+    "end": 69.88,
+    "w": " des"
+   },
+   {
+    "start": 69.88,
+    "end": 70.62,
+    "w": " débutants."
+   }
+  ]
+ },
+ {
+  "start": 71.26,
+  "end": 76.86,
+  "text": "Résultat, des installations qui ne tiennent pas, et un client qui appelle, à 18 heures, mon installation ne fonctionne plus.",
+  "words": [
+   {
+    "start": 71.26,
+    "end": 71.68,
+    "w": " Résultat,"
+   },
+   {
+    "start": 71.8,
+    "end": 72.06,
+    "w": " des"
+   },
+   {
+    "start": 72.06,
+    "end": 72.42,
+    "w": " installations"
+   },
+   {
+    "start": 72.42,
+    "end": 72.62,
+    "w": " qui"
+   },
+   {
+    "start": 72.62,
+    "end": 72.76,
+    "w": " ne"
+   },
+   {
+    "start": 72.76,
+    "end": 72.96,
+    "w": " tiennent"
+   },
+   {
+    "start": 72.96,
+    "end": 73.22,
+    "w": " pas,"
+   },
+   {
+    "start": 73.44,
+    "end": 73.5,
+    "w": " et"
+   },
+   {
+    "start": 73.5,
+    "end": 73.66,
+    "w": " un"
+   },
+   {
+    "start": 73.66,
+    "end": 73.84,
+    "w": " client"
+   },
+   {
+    "start": 73.84,
+    "end": 74.16,
+    "w": " qui"
+   },
+   {
+    "start": 74.16,
+    "end": 74.36,
+    "w": " appelle,"
+   },
+   {
+    "start": 74.48,
+    "end": 74.66,
+    "w": " à"
+   },
+   {
+    "start": 74.66,
+    "end": 74.92,
+    "w": " 18"
+   },
+   {
+    "start": 74.92,
+    "end": 75.28,
+    "w": " heures,"
+   },
+   {
+    "start": 75.48,
+    "end": 75.66,
+    "w": " mon"
+   },
+   {
+    "start": 75.66,
+    "end": 76.06,
+    "w": " installation"
+   },
+   {
+    "start": 76.06,
+    "end": 76.24,
+    "w": " ne"
+   },
+   {
+    "start": 76.24,
+    "end": 76.56,
+    "w": " fonctionne"
+   },
+   {
+    "start": 76.56,
+    "end": 76.86,
+    "w": " plus."
+   }
+  ]
+ },
+ {
+  "start": 80.62,
+  "end": 84.7,
+  "text": "Avec ce livre, tu apprends à installer et à dimensionner, grâce à l'outil Excel fourni.",
+  "words": [
+   {
+    "start": 80.62,
+    "end": 80.84,
+    "w": " Avec"
+   },
+   {
+    "start": 80.84,
+    "end": 81.0,
+    "w": " ce"
+   },
+   {
+    "start": 81.0,
+    "end": 81.26,
+    "w": " livre,"
+   },
+   {
+    "start": 81.58,
+    "end": 81.74,
+    "w": " tu"
+   },
+   {
+    "start": 81.74,
+    "end": 82.04,
+    "w": " apprends"
+   },
+   {
+    "start": 82.04,
+    "end": 82.22,
+    "w": " à"
+   },
+   {
+    "start": 82.22,
+    "end": 82.36,
+    "w": " installer"
+   },
+   {
+    "start": 82.36,
+    "end": 82.54,
+    "w": " et"
+   },
+   {
+    "start": 82.54,
+    "end": 82.68,
+    "w": " à"
+   },
+   {
+    "start": 82.68,
+    "end": 83.3,
+    "w": " dimensionner,"
+   },
+   {
+    "start": 83.54,
+    "end": 83.7,
+    "w": " grâce"
+   },
+   {
+    "start": 83.7,
+    "end": 83.8,
+    "w": " à"
+   },
+   {
+    "start": 83.8,
+    "end": 83.86,
+    "w": " l"
+   },
+   {
+    "start": 83.86,
+    "end": 84.04,
+    "w": "'outil"
+   },
+   {
+    "start": 84.04,
+    "end": 84.3,
+    "w": " Excel"
+   },
+   {
+    "start": 84.3,
+    "end": 84.7,
+    "w": " fourni."
+   }
+  ]
+ },
+ {
+  "start": 85.42,
+  "end": 86.82,
+  "text": "Tout est réuni dans un seul kit.",
+  "words": [
+   {
+    "start": 85.42,
+    "end": 85.6,
+    "w": " Tout"
+   },
+   {
+    "start": 85.6,
+    "end": 85.76,
+    "w": " est"
+   },
+   {
+    "start": 85.76,
+    "end": 86.0,
+    "w": " réuni"
+   },
+   {
+    "start": 86.0,
+    "end": 86.18,
+    "w": " dans"
+   },
+   {
+    "start": 86.18,
+    "end": 86.36,
+    "w": " un"
+   },
+   {
+    "start": 86.36,
+    "end": 86.5,
+    "w": " seul"
+   },
+   {
+    "start": 86.5,
+    "end": 86.82,
+    "w": " kit."
+   }
+  ]
+ },
+ {
+  "start": 87.66,
+  "end": 90.48,
+  "text": "Et l'auteur reste disponible pour t'accompagner si tu as des questions.",
+  "words": [
+   {
+    "start": 87.66,
+    "end": 87.78,
+    "w": " Et"
+   },
+   {
+    "start": 87.78,
+    "end": 87.86,
+    "w": " l"
+   },
+   {
+    "start": 87.86,
+    "end": 88.06,
+    "w": "'auteur"
+   },
+   {
+    "start": 88.06,
+    "end": 88.32,
+    "w": " reste"
+   },
+   {
+    "start": 88.32,
+    "end": 88.92,
+    "w": " disponible"
+   },
+   {
+    "start": 88.92,
+    "end": 89.06,
+    "w": " pour"
+   },
+   {
+    "start": 89.06,
+    "end": 89.18,
+    "w": " t"
+   },
+   {
+    "start": 89.18,
+    "end": 89.6,
+    "w": "'accompagner"
+   },
+   {
+    "start": 89.6,
+    "end": 89.84,
+    "w": " si"
+   },
+   {
+    "start": 89.84,
+    "end": 89.96,
+    "w": " tu"
+   },
+   {
+    "start": 89.96,
+    "end": 90.04,
+    "w": " as"
+   },
+   {
+    "start": 90.04,
+    "end": 90.2,
+    "w": " des"
+   },
+   {
+    "start": 90.2,
+    "end": 90.48,
+    "w": " questions."
+   }
+  ]
+ },
+ {
+  "start": 95.44,
+  "end": 97.3,
+  "text": "Le livre est actuellement en promotion.",
+  "words": [
+   {
+    "start": 95.44,
+    "end": 95.84,
+    "w": " Le"
+   },
+   {
+    "start": 95.84,
+    "end": 96.04,
+    "w": " livre"
+   },
+   {
+    "start": 96.04,
+    "end": 96.24,
+    "w": " est"
+   },
+   {
+    "start": 96.24,
+    "end": 96.62,
+    "w": " actuellement"
+   },
+   {
+    "start": 96.62,
+    "end": 96.84,
+    "w": " en"
+   },
+   {
+    "start": 96.84,
+    "end": 97.3,
+    "w": " promotion."
+   }
+  ]
+ },
+ {
+  "start": 98.16,
+  "end": 100.44,
+  "text": "Son prix normal est de 17 000 francs.",
+  "words": [
+   {
+    "start": 98.16,
+    "end": 98.28,
+    "w": " Son"
+   },
+   {
+    "start": 98.28,
+    "end": 98.46,
+    "w": " prix"
+   },
+   {
+    "start": 98.46,
+    "end": 98.76,
+    "w": " normal"
+   },
+   {
+    "start": 98.76,
+    "end": 98.86,
+    "w": " est"
+   },
+   {
+    "start": 98.86,
+    "end": 99.04,
+    "w": " de"
+   },
+   {
+    "start": 99.04,
+    "end": 99.3,
+    "w": " 17"
+   },
+   {
+    "start": 99.3,
+    "end": 99.5,
+    "w": " 000"
+   },
+   {
+    "start": 99.5,
+    "end": 100.44,
+    "w": " francs."
+   }
+  ]
+ },
+ {
+  "start": 100.58,
+  "end": 103.94,
+  "text": "Mais aujourd'hui, tu peux l'avoir à seulement 4 900 francs.",
+  "words": [
+   {
+    "start": 100.58,
+    "end": 100.76,
+    "w": " Mais"
+   },
+   {
+    "start": 100.76,
+    "end": 101.12,
+    "w": " aujourd"
+   },
+   {
+    "start": 101.12,
+    "end": 101.38,
+    "w": "'hui,"
+   },
+   {
+    "start": 101.52,
+    "end": 101.64,
+    "w": " tu"
+   },
+   {
+    "start": 101.64,
+    "end": 101.78,
+    "w": " peux"
+   },
+   {
+    "start": 101.78,
+    "end": 101.86,
+    "w": " l"
+   },
+   {
+    "start": 101.86,
+    "end": 102.0,
+    "w": "'avoir"
+   },
+   {
+    "start": 102.0,
+    "end": 102.18,
+    "w": " à"
+   },
+   {
+    "start": 102.18,
+    "end": 102.44,
+    "w": " seulement"
+   },
+   {
+    "start": 102.44,
+    "end": 102.76,
+    "w": " 4"
+   },
+   {
+    "start": 102.76,
+    "end": 103.02,
+    "w": " 900"
+   },
+   {
+    "start": 103.02,
+    "end": 103.94,
+    "w": " francs."
+   }
+  ]
+ },
+ {
+  "start": 107.82,
+  "end": 108.66,
+  "text": "Et ce n'est pas tout.",
+  "words": [
+   {
+    "start": 107.82,
+    "end": 108.02,
+    "w": " Et"
+   },
+   {
+    "start": 108.02,
+    "end": 108.16,
+    "w": " ce"
+   },
+   {
+    "start": 108.16,
+    "end": 108.24,
+    "w": " n"
+   },
+   {
+    "start": 108.24,
+    "end": 108.28,
+    "w": "'est"
+   },
+   {
+    "start": 108.28,
+    "end": 108.46,
+    "w": " pas"
+   },
+   {
+    "start": 108.46,
+    "end": 108.66,
+    "w": " tout."
+   }
+  ]
+ },
+ {
+  "start": 109.4,
+  "end": 115.8,
+  "text": "Tu reçois des fiches de câblage à garder sur le terrain, le fichier Excel de dimensionnement, et l'accès à un groupe privé pour poser toutes tes questions.",
+  "words": [
+   {
+    "start": 109.4,
+    "end": 109.6,
+    "w": " Tu"
+   },
+   {
+    "start": 109.6,
+    "end": 109.82,
+    "w": " reçois"
+   },
+   {
+    "start": 109.82,
+    "end": 110.04,
+    "w": " des"
+   },
+   {
+    "start": 110.04,
+    "end": 110.16,
+    "w": " fiches"
+   },
+   {
+    "start": 110.16,
+    "end": 110.38,
+    "w": " de"
+   },
+   {
+    "start": 110.38,
+    "end": 110.68,
+    "w": " câblage"
+   },
+   {
+    "start": 110.68,
+    "end": 110.76,
+    "w": " à"
+   },
+   {
+    "start": 110.76,
+    "end": 110.98,
+    "w": " garder"
+   },
+   {
+    "start": 110.98,
+    "end": 111.18,
+    "w": " sur"
+   },
+   {
+    "start": 111.18,
+    "end": 111.32,
+    "w": " le"
+   },
+   {
+    "start": 111.32,
+    "end": 111.5,
+    "w": " terrain,"
+   },
+   {
+    "start": 111.92,
+    "end": 112.1,
+    "w": " le"
+   },
+   {
+    "start": 112.1,
+    "end": 112.36,
+    "w": " fichier"
+   },
+   {
+    "start": 112.36,
+    "end": 112.62,
+    "w": " Excel"
+   },
+   {
+    "start": 112.62,
+    "end": 112.84,
+    "w": " de"
+   },
+   {
+    "start": 112.84,
+    "end": 113.38,
+    "w": " dimensionnement,"
+   },
+   {
+    "start": 113.6,
+    "end": 113.68,
+    "w": " et"
+   },
+   {
+    "start": 113.68,
+    "end": 113.82,
+    "w": " l"
+   },
+   {
+    "start": 113.82,
+    "end": 113.96,
+    "w": "'accès"
+   },
+   {
+    "start": 113.96,
+    "end": 114.1,
+    "w": " à"
+   },
+   {
+    "start": 114.1,
+    "end": 114.22,
+    "w": " un"
+   },
+   {
+    "start": 114.22,
+    "end": 114.38,
+    "w": " groupe"
+   },
+   {
+    "start": 114.38,
+    "end": 114.66,
+    "w": " privé"
+   },
+   {
+    "start": 114.66,
+    "end": 114.84,
+    "w": " pour"
+   },
+   {
+    "start": 114.84,
+    "end": 115.12,
+    "w": " poser"
+   },
+   {
+    "start": 115.12,
+    "end": 115.3,
+    "w": " toutes"
+   },
+   {
+    "start": 115.3,
+    "end": 115.46,
+    "w": " tes"
+   },
+   {
+    "start": 115.46,
+    "end": 115.8,
+    "w": " questions."
+   }
+  ]
+ },
+ {
+  "start": 116.64,
+  "end": 121.06,
+  "text": "Tu n'es jamais abandonné, l'auteur, ingénieur du domaine, t'accompagne personnellement.",
+  "words": [
+   {
+    "start": 116.64,
+    "end": 116.78,
+    "w": " Tu"
+   },
+   {
+    "start": 116.78,
+    "end": 116.86,
+    "w": " n"
+   },
+   {
+    "start": 116.86,
+    "end": 116.96,
+    "w": "'es"
+   },
+   {
+    "start": 116.96,
+    "end": 117.2,
+    "w": " jamais"
+   },
+   {
+    "start": 117.2,
+    "end": 117.68,
+    "w": " abandonné,"
+   },
+   {
+    "start": 117.82,
+    "end": 117.94,
+    "w": " l"
+   },
+   {
+    "start": 117.94,
+    "end": 118.26,
+    "w": "'auteur,"
+   },
+   {
+    "start": 118.56,
+    "end": 118.86,
+    "w": " ingénieur"
+   },
+   {
+    "start": 118.86,
+    "end": 119.06,
+    "w": " du"
+   },
+   {
+    "start": 119.06,
+    "end": 119.46,
+    "w": " domaine,"
+   },
+   {
+    "start": 119.66,
+    "end": 119.76,
+    "w": " t"
+   },
+   {
+    "start": 119.76,
+    "end": 120.1,
+    "w": "'accompagne"
+   },
+   {
+    "start": 120.1,
+    "end": 121.06,
+    "w": " personnellement."
+   }
+  ]
+ },
+ {
+  "start": 129.68,
+  "end": 130.48,
+  "text": "Intéressé ?",
+  "words": [
+   {
+    "start": 129.68,
+    "end": 130.08,
+    "w": " Intéressé"
+   },
+   {
+    "start": 130.08,
+    "end": 130.48,
+    "w": " ?"
+   }
+  ]
+ },
+ {
+  "start": 130.48,
+  "end": 132.8,
+  "text": "Clique vite sur le lien en commentaire pour commander ton livre.",
+  "words": [
+   {
+    "start": 130.48,
+    "end": 130.66,
+    "w": " Clique"
+   },
+   {
+    "start": 130.66,
+    "end": 130.82,
+    "w": " vite"
+   },
+   {
+    "start": 130.82,
+    "end": 130.98,
+    "w": " sur"
+   },
+   {
+    "start": 130.98,
+    "end": 131.1,
+    "w": " le"
+   },
+   {
+    "start": 131.1,
+    "end": 131.18,
+    "w": " lien"
+   },
+   {
+    "start": 131.18,
+    "end": 131.48,
+    "w": " en"
+   },
+   {
+    "start": 131.48,
+    "end": 131.82,
+    "w": " commentaire"
+   },
+   {
+    "start": 131.82,
+    "end": 132.02,
+    "w": " pour"
+   },
+   {
+    "start": 132.02,
+    "end": 132.34,
+    "w": " commander"
+   },
+   {
+    "start": 132.34,
+    "end": 132.5,
+    "w": " ton"
+   },
+   {
+    "start": 132.5,
+    "end": 132.8,
+    "w": " livre."
+   }
+  ]
+ },
+ {
+  "start": 133.66,
+  "end": 134.36,
+  "text": "A très bientôt.",
+  "words": [
+   {
+    "start": 133.66,
+    "end": 133.84,
+    "w": " A"
+   },
+   {
+    "start": 133.84,
+    "end": 134.04,
+    "w": " très"
+   },
+   {
+    "start": 134.04,
+    "end": 134.36,
+    "w": " bientôt."
+   }
+  ]
+ }
+]
