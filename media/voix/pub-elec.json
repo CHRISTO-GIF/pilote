@@ -1,0 +1,18 @@
+{
+ "voice": "fr-FR-HenriNeural",
+ "rate": "+6%",
+ "lines": {
+  "01": "Tu veux te lancer dans l'installation des panneaux solaires, mais tu ne sais pas par où commencer ?",
+  "02": "Tu fais déjà des installations, mais le dimensionnement te dépasse, et tes installations ne supportent pas les charges ?",
+  "03": "Tu veux faire de l'électricité bâtiment, mais tu ne maîtrises pas les câblages : simple allumage, double allumage, va-et-vient…",
+  "04": "Bref, tu veux apprendre l'électricité bâtiment et l'énergie solaire, sans savoir par où commencer ? J'ai une bonne nouvelle pour toi !",
+  "05": "Après avoir formé de nombreux jeunes au Togo, l'auteur a décidé d'écrire un guide, pour tous ceux qui ne peuvent pas le rencontrer en personne : apprendre, et réussir leurs installations, où qu'ils soient.",
+  "06": "Ce guide, c'est Le Livre de l'Électricien PRO. Dans le module électricité bâtiment, tu apprends les différents câblages, les mesures de sécurité, les sections de câble à respecter, les protections et la mise à la terre.",
+  "07": "Dans le module énergie solaire, tu apprends à dimensionner. Et c'est tellement simple : un fichier Excel fait le calcul pour toi. Tu entres tes consommations, et il te donne ton dimensionnement. Même sans être du métier, tu dimensionnes facilement.",
+  "08": "Le dimensionnement, c'est justement ce qui bloque la plupart des débutants. Résultat : des installations qui ne tiennent pas, et un client qui appelle : à dix-huit heures, mon installation ne fonctionne plus !",
+  "09": "Avec ce livre, tu apprends à installer et à dimensionner, grâce à l'outil Excel fourni. Tout est réuni dans un seul kit. Et l'auteur reste disponible pour t'accompagner si tu as des questions.",
+  "10": "Le livre est actuellement en promotion. Son prix normal est de dix-sept mille francs. Mais aujourd'hui, tu peux l'avoir à seulement quatre mille neuf cents francs !",
+  "11": "Et ce n'est pas tout ! Tu reçois des fiches de câblage à garder sur le terrain, le fichier Excel de dimensionnement, et l'accès à un groupe privé pour poser toutes tes questions. Tu n'es jamais abandonné : l'auteur, ingénieur du domaine, t'accompagne personnellement.",
+  "12": "Intéressé ? Clique vite sur le lien en commentaire pour commander ton livre. À très bientôt !"
+ }
+}
